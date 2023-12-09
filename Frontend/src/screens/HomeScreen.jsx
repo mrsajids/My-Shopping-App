@@ -7,7 +7,7 @@ const HomeScreen = () => {
                 <Col md={5}>
                     {
                         products.map((element) => {
-                            return <>{element.name}
+                            return <>{element.price}
                             </>
                         })
                     }
