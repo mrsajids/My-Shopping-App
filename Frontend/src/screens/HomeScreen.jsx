@@ -1,17 +1,20 @@
 import products from '../products'
-import {Row,Col} from 'react-bootstrap'
+import { Row, Col } from 'react-bootstrap'
+import ProductScreen from './ProductScreen'
 const HomeScreen = () => {
     return (
         <>
             <Row>
-                <Col md={5}>
-                    {
-                        products.map((element) => {
-                            return <>{element.price}
-                            </>
-                        })
-                    }
-                </Col>
+
+                {
+                    products.map((product) => (
+                    <Col>
+                        <ProductScreen product={product} />
+                    </Col>)
+                    )
+
+                }
+
             </Row>
 
         </>

@@ -10,10 +10,10 @@ function App() {
     <>
       <main>
         <Header />
-        <Container>
-          <HomeScreen/>
-          <Footer />
+        <Container className='main-container'>
+          <HomeScreen />
         </Container>
+        <Footer />
       </main>
     </>
   );
