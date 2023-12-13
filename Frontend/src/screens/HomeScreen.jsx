@@ -9,7 +9,7 @@ const HomeScreen = () => {
                 {
                     products.map((product) => (
                     <Col>
-                        <ProductScreen product={product} />
+                        <ProductScreen product={product}/>
                     </Col>)
                     )
 
