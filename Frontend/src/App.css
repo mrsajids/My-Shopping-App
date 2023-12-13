@@ -1,7 +1,9 @@
 .main-container{
     min-height: 75vh;
 }
-
+.Cards a{
+    text-decoration: none;
+}
 footer {
     padding: 1rem;
     background-color: #1a1a1a;
