@@ -4,19 +4,16 @@ import ProductScreen from './ProductScreen'
 const HomeScreen = () => {
     return (
         <>
+            <h1>Trends</h1>
             <Row>
-
                 {
                     products.map((product) => (
                     <Col>
                         <ProductScreen product={product}/>
                     </Col>)
                     )
-
                 }
-
             </Row>
-
         </>
     )
 }

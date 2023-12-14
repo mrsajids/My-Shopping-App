@@ -1,4 +1,5 @@
-import { Card, Button } from "react-bootstrap"
+import { Card } from "react-bootstrap"
+import Rating from "./Rating"
 const ProductScreen = ({ product }) => {
     return (
         <>
@@ -10,12 +11,13 @@ const ProductScreen = ({ product }) => {
                     <a href={`/product/${product._id}`}>
                         <Card.Title>{product.name}</Card.Title>
                         <Card.Text>
-                            {product.rating} from {product.numReviews}
+                            <Rating  value={product.rating} text={`${product.numReviews} reviews`} />
+                    
                         </Card.Text >
                         <div>
                         &#x24; {product.price}
                         </div>
-                    </a>
+                    </a>               
                 </Card.Body>
             </Card>
         </>
