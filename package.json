@@ -1,0 +1,23 @@
+{
+  "name": "shopping-app",
+  "version": "1.0.0",
+  "description": "Mern Stack app",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mrsajids/Shopping-App.git"
+  },
+  "author": "Sajeed",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/mrsajids/Shopping-App/issues"
+  },
+  "homepage": "https://github.com/mrsajids/Shopping-App#readme",
+  "dependencies": {
+    "express": "^4.18.2"
+  }
+}
