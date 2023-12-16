@@ -1,11 +1,22 @@
 import { Col, ListGroup, ListGroupItem, Row, Button } from "react-bootstrap";
-import Products from "../products"
+// import Products from "../products"
 import { Link, useParams } from 'react-router-dom';
 import Rating from "./Rating";
+import { useEffect, useState } from "react"
+import axios from 'axios'
+
 const ProductDetails = () => {
-    const { id } = useParams();
+    const [product,setProduct]=useState([])
+    const { id } = useParams()
+    useEffect(()=>{
+        const fetchProduct= async ()=>{
+            const {data}=await axios.get(`/products/${id}`)
+            setProduct(data)
+        }
+        fetchProduct()
+    },[])
     // const products = Products.find((p)=>p._id===match.params.id) uska wala
-    const product = Products.find((p) => p._id === id)
+    // const product = Products.find((p) => p._id === id)
     return (
         <>
             <Link to="/" className="btn btn-light">
@@ -25,8 +36,14 @@ const ProductDetails = () => {
                                 value={product.rating}
                                 text={`${product.numReviews} Reviews`} />
                         </ListGroupItem>
-                        <ListGroupItem>Price : ${product.price}</ListGroupItem>
-                        <ListGroupItem>{product.description}</ListGroupItem>
+
+                        <ListGroupItem>
+                            Price : ${product.price}
+                        </ListGroupItem>
+
+                        <ListGroupItem>
+                            {product.description}
+                        </ListGroupItem>
                     </ListGroup>
                 </Col>
                 <Col>
