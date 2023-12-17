@@ -23,7 +23,7 @@ const ProductDetails = () => {
                 <i className="fas fa-arrow-left"></i> Go Back</Link>
             <Row>
                 <Col md={6}>
-                    <img src={product.image} alt={product.name} fluid />
+                    <img src={product.image} alt={product.name} className="prodImg" />
                 </Col>
                 <Col md={4}>
                     <ListGroup variant="flush">

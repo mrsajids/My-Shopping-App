@@ -11,3 +11,7 @@ footer {
 .Cards a {
     text-decoration: none;
 }
+
+.prodImg{
+    width: -webkit-fill-available;
+}
