@@ -2,6 +2,7 @@ const express = require('express')
 const cors = require('cors')
 const products = require('./data/products')
 const dotenv=require('dotenv')
+const dbconnection = require('./config/config')
 const app = express()
 
 //cors error
@@ -9,6 +10,8 @@ app.use(cors())
 
 // configuration 
 dotenv.config()
+
+dbconnection()
 
 app.get("/", (req, res) => {
     res.send('<h1>app working properly..</h1>')
