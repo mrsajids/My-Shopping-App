@@ -11,6 +11,7 @@ app.use(cors())
 // configuration 
 dotenv.config()
 
+//mongoose connection
 dbconnection()
 
 app.get("/", (req, res) => {
