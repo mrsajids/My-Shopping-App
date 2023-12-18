@@ -19,6 +19,7 @@ dbconnection()
 //middleware for json
 app.use(express.json())
 
+//middleware for error
 app.use(errorHandler)
 
 app.use('/api',productRoute)
