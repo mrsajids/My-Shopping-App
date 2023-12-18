@@ -3,6 +3,7 @@ const cors = require('cors')
 const products = require('./data/products')
 const dotenv=require('dotenv')
 const dbconnection = require('./config/config')
+const productRoute =require('./router/productRoute')
 const app = express()
 
 //cors error
@@ -13,6 +14,11 @@ dotenv.config()
 
 //mongoose connection
 dbconnection()
+
+//middleware for json
+app.use(express.json())
+
+app.use('/api',productRoute)
 
 app.get("/", (req, res) => {
     res.send('<h1>app working properly..</h1>')
