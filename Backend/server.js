@@ -21,7 +21,7 @@ app.use(express.json())
 app.use('/api',productRoute)
 
 app.get("/", (req, res) => {
-    res.send('<h1>app working properly..</h1>')
+    res.send('<h1>Welcome to the server..</h1>')
 })
 
 app.get("/products", (req, res) => {
