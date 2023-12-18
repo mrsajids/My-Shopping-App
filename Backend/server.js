@@ -4,6 +4,7 @@ const products = require('./data/products')
 const dotenv=require('dotenv')
 const dbconnection = require('./config/config')
 const productRoute =require('./router/productRoute')
+const errorHandler = require('./middleWare/errorMiddleWare')
 const app = express()
 
 //cors error
@@ -17,6 +18,8 @@ dbconnection()
 
 //middleware for json
 app.use(express.json())
+
+app.use(errorHandler)
 
 app.use('/api',productRoute)
 
