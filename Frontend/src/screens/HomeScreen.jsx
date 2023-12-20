@@ -19,9 +19,9 @@ const HomeScreen = () => {
             <h1>Trends</h1>
             <Row>
                 {
-                    Products.map((product) => (
-                    <Col key={product._id}>
-                        <ProductScreen product={product}/>
+                    Products.map((product,i) => (
+                    <Col key={i}>
+                        <ProductScreen product={product} />
                     </Col>)
                     )
                 }

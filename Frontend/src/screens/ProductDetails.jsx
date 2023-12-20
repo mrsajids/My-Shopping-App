@@ -20,7 +20,8 @@ const ProductDetails = () => {
     return (
         <>
             <Link to="/" className="btn btn-light">
-                <i className="fas fa-arrow-left"></i> Go Back</Link>
+                <i className="fas fa-arrow-left"></i> Go Back
+            </Link>
             <Row>
                 <Col md={6}>
                     <img src={product.image} alt={product.name} className="prodImg" />
