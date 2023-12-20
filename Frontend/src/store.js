@@ -7,11 +7,11 @@ const initialState = {}
 const reducer = combineReducers({
     productList: productListReducer
 })
-// const middleware = [thunk]
+const middleware = [thunk]
 
 const store = createStore(
     reducer,
-    initialState
+    initialState, applyMiddleware(...middleware)
 )
 
 export default store
