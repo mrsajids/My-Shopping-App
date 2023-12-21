@@ -13,7 +13,6 @@ const ProductScreen = ({ product }) => {
                         <Card.Title>{product.name}</Card.Title>
                         <Card.Text>
                             <Rating  value={product.rating} text={`${product.numReviews} reviews`} />
-                    
                         </Card.Text >
                         <div>
                         &#x24; {product.price}

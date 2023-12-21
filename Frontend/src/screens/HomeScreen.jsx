@@ -2,10 +2,12 @@
 import { Row, Col } from 'react-bootstrap'
 import ProductScreen from './ProductScreen'
 import { useEffect, useState } from 'react'
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { listProduct } from '../action/productAction'
 
 const HomeScreen = () => {
+    const productList = useSelector(state=>state.productList)
+    const {loading,error,product}=productList
     const dispatch = useDispatch()
     useEffect(() => {
         dispatch(listProduct)
@@ -14,15 +16,20 @@ const HomeScreen = () => {
     return (
         <>
             <h1>Trends</h1>
-            <Row>
+            {
+                loading?<h1>Loading..</h1>:  error?{error}:
+                <Row>
                 {
-                    Products.map((product, i) => (
+                    product.map((product, i) => (
                         <Col key={i}>
                             <ProductScreen product={product} />
                         </Col>)
                     )
                 }
             </Row>
+            }
+            
+            
         </>
     )
 }
