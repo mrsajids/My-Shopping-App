@@ -15,3 +15,10 @@ footer {
 .prodImg{
     width: -webkit-fill-available;
 }
+
+.spinner{
+    height: 80px;
+    width: 80px;
+    display: block;
+    margin: auto;
+}

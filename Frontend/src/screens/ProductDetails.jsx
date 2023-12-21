@@ -1,5 +1,4 @@
 import { Col, ListGroup, ListGroupItem, Row, Button } from "react-bootstrap";
-// import Products from "../products"
 import { Link, useParams } from 'react-router-dom';
 import Rating from "./Rating";
 import { useEffect, useState } from "react"
