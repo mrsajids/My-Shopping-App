@@ -2,16 +2,17 @@ import { Col, ListGroup, ListGroupItem, Row, Button } from "react-bootstrap";
 import { Link, useParams } from 'react-router-dom';
 import Rating from "./Rating";
 import { useEffect, useState } from "react"
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { listDetailProduct } from "../action/productAction";
 
 const ProductDetails = () => {
-    const dispatch = useDispatch()
-    const [product, setProduct] = useState([])
     const { id } = useParams()
+    const dispatch = useDispatch()
+    const productDetails = useSelector(state => state.productDetails)
+    const { product } = productDetails
     useEffect(() => {
         dispatch(listDetailProduct(id))
-    }, [])
+    }, [dispatch, id])
     // const products = Products.find((p)=>p._id===match.params.id) uska wala
     // const product = Products.find((p) => p._id === id)
     return (
@@ -55,7 +56,6 @@ const ProductDetails = () => {
                         <Button>add to cart</Button>
                     </ListGroupItem>
                 </Col>
-
             </Row>
         </>
     )
