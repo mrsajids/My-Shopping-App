@@ -1,4 +1,3 @@
-// import products from '../products'
 import { Row, Col } from "react-bootstrap";
 import ProductScreen from "./ProductScreen";
 import { useEffect } from "react";

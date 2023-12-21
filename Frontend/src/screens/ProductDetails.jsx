@@ -1,7 +1,7 @@
 import { Col, ListGroup, ListGroupItem, Row, Button } from "react-bootstrap";
 import { Link, useParams } from 'react-router-dom';
 import Rating from "./Rating";
-import { useEffect, useState } from "react"
+import { useEffect } from "react"
 import { useDispatch, useSelector } from "react-redux";
 import { listDetailProduct } from "../action/productAction";
 
