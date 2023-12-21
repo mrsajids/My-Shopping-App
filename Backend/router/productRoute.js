@@ -3,7 +3,7 @@ const router = express.Router()
 const Product = require('../moldel/productModel')
 
 //get all products
-router.get('/products', async (req, res) => {
+router.get('/products/', async (req, res) => {
     const product = await Product.find({})
     res.json(product)
 })

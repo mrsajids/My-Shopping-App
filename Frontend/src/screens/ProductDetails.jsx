@@ -2,18 +2,16 @@ import { Col, ListGroup, ListGroupItem, Row, Button } from "react-bootstrap";
 import { Link, useParams } from 'react-router-dom';
 import Rating from "./Rating";
 import { useEffect, useState } from "react"
-import axios from 'axios'
+import { useDispatch } from "react-redux";
+import { listDetailProduct } from "../action/productAction";
 
 const ProductDetails = () => {
-    const [product,setProduct]=useState([])
+    const dispatch = useDispatch()
+    const [product, setProduct] = useState([])
     const { id } = useParams()
-    useEffect(()=>{
-        const fetchProduct= async ()=>{
-            const {data}=await axios.get(`/products/${id}`)
-            setProduct(data)
-        }
-        fetchProduct()
-    },[])
+    useEffect(() => {
+        dispatch(listDetailProduct(id))
+    }, [])
     // const products = Products.find((p)=>p._id===match.params.id) uska wala
     // const product = Products.find((p) => p._id === id)
     return (
