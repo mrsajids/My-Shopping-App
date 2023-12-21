@@ -11,16 +11,15 @@ const ProductScreen = ({ product }) => {
                     <Card.Img variant="top" src={product.image} />
                 </Link>
                 <Card.Body className="text-center">
-                    <LinkContainer to={`/product/${product._id}`}>
+                    <Link to={`/product/${product._id}`}>
                         <Card.Title>{product.name}</Card.Title>
-                        </LinkContainer>   
-                        <Card.Text>
+                        {/* <Card.Text>
+                        </Card.Text> */}
                             <Rating  value={product.rating} text={`${product.numReviews} reviews`} />
-                        </Card.Text>
                         <div>
                         &#x24; {product.price}
                         </div>
-                                
+                    </Link>               
                 </Card.Body>
             </Card>
         </>
