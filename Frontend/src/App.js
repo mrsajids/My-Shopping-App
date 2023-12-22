@@ -6,6 +6,7 @@ import Header from './components/Header';
 import HomeScreen from './screens/HomeScreen';
 import { Routes, Route } from 'react-router-dom'
 import ProductDetails from './screens/ProductDetails';
+import CartSc from './screens/CartSc';
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
           <Routes>
             <Route path='/' Component={HomeScreen} />
             <Route path='/product/:id' Component={ProductDetails} />
+            <Route path='/cart/:id?' Component={CartSc} />
           </Routes>
         </Container>
         <Footer />
