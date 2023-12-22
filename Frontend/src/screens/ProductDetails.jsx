@@ -1,18 +1,25 @@
-import { Col, ListGroup, ListGroupItem, Row, Button } from "react-bootstrap";
-import { Link, useParams } from 'react-router-dom';
+import { Col, ListGroup, ListGroupItem, Row, Button, Form } from "react-bootstrap";
+import { Link, useNavigate, useParams } from 'react-router-dom';
 import Rating from "./Rating";
-import { useEffect } from "react"
+import { useEffect, useState } from "react"
 import { useDispatch, useSelector } from "react-redux";
 import { listDetailProduct } from "../action/productAction";
 
 const ProductDetails = () => {
     const { id } = useParams()
     const dispatch = useDispatch()
+    const [qty, setQty] = useState(1)
+    const navigate=useNavigate()
     const productDetails = useSelector(state => state.productDetails)
     const { product } = productDetails
+    
     useEffect(() => {
         dispatch(listDetailProduct(id))
     }, [dispatch, id])
+
+    const addToCartHandler = () => {
+        navigate(`/cart/${id}?qty=${qty}`);
+    };
     // const products = Products.find((p)=>p._id===match.params.id) uska wala
     // const product = Products.find((p) => p._id === id)
     return (
@@ -48,12 +55,31 @@ const ProductDetails = () => {
                 <Col>
                     <ListGroupItem>
                         <Row>
-                            <Col> Status:</Col>
-                            <Col>{product.countInStock > 0 ? 'in stock' : 'out of stock'}</Col>
+                            <Col className="text-end"> Status:</Col>
+                            <Col className="text-start">{product.countInStock > 0 ? 'in stock' : 'out of stock'}</Col>
                         </Row>
                     </ListGroupItem>
-                    <ListGroupItem>
-                        <Button>add to cart</Button>
+                    {product.countInStock > 0 && (
+                        <ListGroupItem>
+                            <Row className="my-3" >
+                                <Col className="my-2">Qty</Col>
+                                <Form.Control
+                                    as="select"
+                                    value={qty}
+                                    onChange={(e) => setQty(e.target.value)}
+                                >
+                                    {[...Array(product.countInStock).keys()].map((x) => (
+                                        <option key={x + 1} value={x + 1}>
+                                            {x + 1}
+                                        </option>
+                                    ))}
+                                </Form.Control>
+                            </Row>
+                        </ListGroupItem>
+                    )}
+                    <br /><br /><br />
+                    <ListGroupItem className="text-center">
+                        <Button type="button" onClick={addToCartHandler}>add to cart</Button>
                     </ListGroupItem>
                 </Col>
             </Row>
