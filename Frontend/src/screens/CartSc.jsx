@@ -19,14 +19,14 @@ const CartSc = () => {
     const dispatch = useDispatch()
     const { id } = useParams()
     const location = useLocation()
-    const qty = location.search ? Number(location.search.split("=")[1]) : 
-    
-    useEffect(() => {
-        // if (id) {
-        //     dispatch(addToCart(id, qty))
-        // }else{
+    const qty = location.search ? Number(location.search.split("=")[1]) : 1
 
-        // }
+    useEffect(() => {
+        if (id) {
+            dispatch(addToCart(id, qty))
+        } else {
+            console.log('showing cart')
+        }
     }, [dispatch, id, qty])
 
     const cart = useSelector((state) => state.cart)
@@ -64,7 +64,6 @@ const CartSc = () => {
                                                 }
                                             >
                                                 {
-
                                                     [...Array(item.countInStock).keys()].map((x) => (
                                                         <option key={x + 1} value={x + 1}>
                                                             {x + 1}
