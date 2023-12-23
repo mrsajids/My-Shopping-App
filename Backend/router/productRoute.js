@@ -11,11 +11,16 @@ router.get('/products/', async (req, res) => {
 //get single product
 router.get('/products/:id', async (req, res) => {
     const product = await Product.findById(req.params.id)
-    if (product) {
+    try {
+        if (product) {
         res.json(product)
     } else {
         res.status(404).json({ message: "product not found" })
     }
+    } catch (error) {
+        
+    }
+    
 })
 
 module.exports = router

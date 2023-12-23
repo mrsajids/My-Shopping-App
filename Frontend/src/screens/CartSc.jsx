@@ -19,19 +19,22 @@ const CartSc = () => {
     const dispatch = useDispatch()
     const { id } = useParams()
     const location = useLocation()
-    const qty = location.search ? Number(location.search.split("=")[1]) : 1
-    // console.log(qty);
+    const qty = location.search ? Number(location.search.split("=")[1]) : 
+    
     useEffect(() => {
-        dispatch(addToCart(id, 3))
+        // if (id) {
+        //     dispatch(addToCart(id, qty))
+        // }else{
+
+        // }
     }, [dispatch, id, qty])
 
     const cart = useSelector((state) => state.cart)
     const { cartItems } = cart
-    // console.log(cartItems)
+
     return (
         <>
-            <h1>my cart</h1>
-            {/* <Row>
+            <Row>
                 <Col md={8}>
                     <h1>Shopping Cart</h1>
                     {cartItems.length === 0 ? (
@@ -40,8 +43,8 @@ const CartSc = () => {
                         </Message>
                     ) : (
                         <ListGroup variant="flush">
-                            {cartItems.map((item) => (
-                                <ListGroupItem>
+                            {cartItems.map((item, i) => (
+                                <ListGroupItem key={i}>
                                     <Row>
                                         <Col md={2}>
                                             <Image src={item.image} alt={item.name} fluid rounded />
@@ -60,11 +63,14 @@ const CartSc = () => {
                                                     )
                                                 }
                                             >
-                                                {[...Array(item.countInStock).keys()].map((x) => (
-                                                    <option key={x + 1} value={x + 1}>
-                                                        {x + 1}
-                                                    </option>
-                                                ))}
+                                                {
+
+                                                    [...Array(item.countInStock).keys()].map((x) => (
+                                                        <option key={x + 1} value={x + 1}>
+                                                            {x + 1}
+                                                        </option>
+                                                    ))
+                                                }
                                             </Form.Control>
                                             <Button
                                                 type="button"
@@ -82,7 +88,7 @@ const CartSc = () => {
                         </ListGroup>
                     )}
                 </Col>
-            </Row> */}
+            </Row>
         </>
     )
 }
