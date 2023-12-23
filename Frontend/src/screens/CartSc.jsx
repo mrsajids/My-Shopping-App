@@ -1,12 +1,14 @@
 import { useEffect } from "react"
 import { useDispatch, useSelector } from 'react-redux'
 import { addToCart } from "../action/cartAction"
+import { removeFromCart } from "../action/cartAction"
 import { useLocation, useParams } from "react-router-dom"
 import { Link } from "react-router-dom"
 import Message from "../components/shared/Message"
 import {
     Row,
     Col,
+    Card,
     Form,
     Button,
     Image,
@@ -30,6 +32,10 @@ const CartSc = () => {
 
     const cart = useSelector((state) => state.cart)
     const { cartItems } = cart
+
+    const removeFromCartHandler = (id) => {
+        dispatch(removeFromCart(id))
+      }
 
     return (
         <>
@@ -75,6 +81,7 @@ const CartSc = () => {
                                             <Button
                                                 type="button"
                                                 variant="light"
+                                                onClick={()=>removeFromCartHandler(item.product)}
                                             >
                                                 <i
                                                     className="fa fa-trash text-danger"
@@ -87,6 +94,30 @@ const CartSc = () => {
                             ))}
                         </ListGroup>
                     )}
+                </Col>
+                <Col md={4}>
+                    <Card>
+                        <ListGroup variant="flush">
+                            <ListGroupItem>
+                                <h2>
+                                    subtotal ({cartItems.reduce((acc, item) => acc + item.qty, 0)}
+                                    ) items
+                                </h2>
+                                $
+                                {cartItems
+                                    .reduce((acc, item) => acc + item.qty * item.price, 0)
+                                    .toFixed(2)}
+                            </ListGroupItem>
+                            <Button
+                                type="button"
+                                className="btn-block"
+                                disabled={cartItems.length === 0}
+                            // onClick={checkout}
+                            >
+                                Proceed to checkOut
+                            </Button>
+                        </ListGroup>
+                    </Card>
                 </Col>
             </Row>
         </>

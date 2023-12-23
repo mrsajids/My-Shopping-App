@@ -1,4 +1,4 @@
-import { ADD_TO_CART } from "../constants/cartConstant"
+import { ADD_TO_CART, REMOVE_FROM_CART } from "../constants/cartConstant"
 import axios from 'axios'
 
 export const addToCart = (id, qty) => async (dispatch, getState) => {
@@ -18,6 +18,14 @@ export const addToCart = (id, qty) => async (dispatch, getState) => {
     localStorage.setItem('cartItems', JSON.stringify(getState().cart.cartItems))  
     } catch (error) {
         console.error(error)
-    }
-    
+    }   
 }
+
+export const removeFromCart = (id) => (dispatch, getState) => {
+    dispatch({
+      type: REMOVE_FROM_CART,
+      payload: id,
+    })
+  
+    localStorage.setItem("cartItems", JSON.stringify(getState().cart.cartItems));
+  }
