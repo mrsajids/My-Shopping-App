@@ -4,6 +4,7 @@ const products = require('./data/products')
 const dotenv=require('dotenv')
 const dbconnection = require('./config/config')
 const productRoute =require('./router/productRoute')
+const userRoute =require('./router/userRoute')
 const errorHandler = require('./middleWare/errorMiddleWare')
 const app = express()
 
@@ -23,6 +24,7 @@ app.use(express.json())
 app.use(errorHandler)
 
 app.use('/api',productRoute)
+app.use('/api/user/',userRoute)
 
 // app.get("/", (req, res) => {
 //     res.send('<h1>Welcome to the server..</h1>')

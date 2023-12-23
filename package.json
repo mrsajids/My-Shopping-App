@@ -5,12 +5,12 @@
   "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start":"nodemon backend/server.js",
+    "start": "nodemon backend/server.js",
     "server": "nodemon backend/server.js",
     "client": "npm start --prefix frontend",
     "dev": "concurrently \"npm run client\" \"npm run server\"",
-    "dataimport":"node backend/seeder.js",
-    "datadestroy":"node backend/seeder.js -d"
+    "dataimport": "node backend/seeder.js",
+    "datadestroy": "node backend/seeder.js -d"
   },
   "repository": {
     "type": "git",
