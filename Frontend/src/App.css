@@ -8,7 +8,7 @@ footer {
     text-align: center;
 }
 
-.Cards a {
+.Cards a,.CartList a {
     text-decoration: none; 
 }
 

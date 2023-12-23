@@ -39,10 +39,12 @@ const CartSc = () => {
                     <h1>Shopping Cart</h1>
                     {cartItems.length === 0 ? (
                         <Message>
-                            Your Cart is Empty !<Link to="/">Go Back</Link>
+                            Your Cart is Empty !
+                            <br />
+                            <Link to="/">Go Back</Link>
                         </Message>
                     ) : (
-                        <ListGroup variant="flush">
+                        <ListGroup variant="flush" className="CartList">
                             {cartItems.map((item, i) => (
                                 <ListGroupItem key={i}>
                                     <Row>
