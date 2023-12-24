@@ -1,10 +1,10 @@
 const User = require('../moldel/userModel')
 const generateToken = require('../utils/generateToken')
 
-const authController = async (req, res) => {
+const authController = async (req, res, next) => {
   const { email, password } = req.body;
   const user = await User.findOne({ email });
-  console.log(user);
+  // console.log(user);
   if (user && (await user.matchPassword(password))) {
     res.status(201).json({
       _id: user._id,
@@ -15,8 +15,9 @@ const authController = async (req, res) => {
     })
 
   } else {
-    res.status(401);
-    throw new Error("Invalid Email or Password");
+    res.status(500);
+    const err = new Error("Invalid Email or Password");
+    next(err);
   }
 }
 
@@ -31,7 +32,8 @@ const getUserProfile=async (req,res,next)=>{
     });
   } else {
     res.status(404);
-    throw new Error("User Not Found");
+    const err = new Error("User Not Found");
+    next(err);
   }
 }
 
