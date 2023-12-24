@@ -4,7 +4,6 @@ const generateToken = require('../utils/generateToken')
 const authController = async (req, res, next) => {
   const { email, password } = req.body;
   const user = await User.findOne({ email });
-  // console.log(user);
   if (user && (await user.matchPassword(password))) {
     res.status(201).json({
       _id: user._id,
@@ -21,7 +20,7 @@ const authController = async (req, res, next) => {
   }
 }
 
-const getUserProfile=async (req,res,next)=>{
+const getUserProfile = async (req, res, next) => {
   const user = await User.findById(req.user._id);
   if (user) {
     res.json({
@@ -37,4 +36,4 @@ const getUserProfile=async (req,res,next)=>{
   }
 }
 
-module.exports = { authController,getUserProfile }
+module.exports = { authController, getUserProfile }
