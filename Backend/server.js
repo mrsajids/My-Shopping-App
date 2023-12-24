@@ -21,7 +21,11 @@ dbconnection()
 app.use(express.json())
 
 //middleware for error
-app.use(errorHandler)
+// app.use(errorHandler)
+app.use((err, req, res, next) => {
+  console.error(err.stack);
+  res.status(500).send('Something went wrong!');
+});
 
 app.use('/api',productRoute)
 app.use('/api/user/',userRoute)
