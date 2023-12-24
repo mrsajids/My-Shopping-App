@@ -1,0 +1,12 @@
+{
+    "email": "admin@admin.com",
+    "password": "123456",
+
+}
+{
+    "_id": "657fc6cce183ab6931d1934c",
+    "name": "admin",
+    "email": "admin@admin.com",
+    "isAdmin": true,
+    "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY1N2ZjNmNjZTE4M2FiNjkzMWQxOTM0YyIsImlhdCI6MTcwMzQyMDA4NywiZXhwIjoxNzA0NzE2MDg3fQ.E31QFGSA_dVHHxTCDDA9pFpafEuRh8Yucypt0QUAh6k"
+}

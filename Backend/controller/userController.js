@@ -20,4 +20,19 @@ const authController = async (req, res) => {
   }
 }
 
-module.exports = { authController }
+const getUserProfile=async (req,res,next)=>{
+  const user = await User.findById(req.user._id);
+  if (user) {
+    res.json({
+      _id: user._id,
+      name: user.name,
+      email: user.email,
+      isAdmin: user.isAdmin,
+    });
+  } else {
+    res.status(404);
+    throw new Error("User Not Found");
+  }
+}
+
+module.exports = { authController,getUserProfile }
