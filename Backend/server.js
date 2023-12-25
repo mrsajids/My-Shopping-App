@@ -24,6 +24,7 @@ app.use(express.json())
 
 
 app.use('/api',productRoute)
+
 app.use('/api/user/',userRoute)
 
 app.use(errorHandler)
