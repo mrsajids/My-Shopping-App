@@ -7,6 +7,7 @@ import HomeScreen from './screens/HomeScreen';
 import { Routes, Route } from 'react-router-dom'
 import ProductDetails from './screens/ProductDetails';
 import CartSc from './screens/CartSc';
+import LoginScreen from './screens/LoginScreen';
 
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
             <Route path='/' Component={HomeScreen} />
             <Route path='/product/:id' Component={ProductDetails} />
             <Route path='/cart/:id?' Component={CartSc} />
+            <Route path='/login' Component={LoginScreen} />
           </Routes>
         </Container>
         <Footer />
