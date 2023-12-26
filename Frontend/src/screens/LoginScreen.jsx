@@ -23,7 +23,7 @@ const LoginScreen = () => {
         if (userInfo) {
             navigate(redirect)
         }
-    }, [navigate, userInfo, redirect])
+    }, [ userInfo, redirect])
 
     const submitHandler = (e) => {
         e.preventDefault()
@@ -64,7 +64,7 @@ const LoginScreen = () => {
             <Row>
                 <Col>
                     New Customer ?
-                    <Link to={redirect ? `register?redirect=${redirect}` : "/register"}>
+                    <Link to={(redirect) ? `register?redirect=${redirect}` : "/register"}>
                         Register
                     </Link>
                 </Col>

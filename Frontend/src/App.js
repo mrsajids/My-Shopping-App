@@ -17,7 +17,7 @@ function App() {
         <Header />
         <Container className='main-container my-4'>
           <Routes>
-            <Route path='/' Component={HomeScreen} />
+            <Route path='/' Component={HomeScreen} exact/>
             <Route path='/product/:id' Component={ProductDetails} />
             <Route path='/cart/:id?' Component={CartSc} />
             <Route path='/login' Component={LoginScreen} />

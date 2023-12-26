@@ -83,7 +83,7 @@ const RegisterScreen = () => {
             ></Form.Control>
           </Form.Group>
           <Button type="submit" varient="primary">
-            SING IN
+            Register
           </Button>
         </Form>
         <Row>
