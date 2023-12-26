@@ -9,6 +9,7 @@ import ProductDetails from './screens/ProductDetails';
 import CartSc from './screens/CartSc';
 import LoginScreen from './screens/LoginScreen';
 import RegisterScreen from './screens/RegisterScreen';
+import 'react-toastify/dist/ReactToastify.css';
 
 function App() {
   return (

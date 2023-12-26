@@ -20,12 +20,14 @@ const RegisterScreen = () => {
 
   const dispatch = useDispatch();
   const userRegister = useSelector((state) => state.userRegister);
+  const userLogin = useSelector((state) => state.userLogin);
   const { loading, error, userInfo } = userRegister;
 
   useEffect(() => {
-    if (userInfo) {
-        navigate(redirect);
-    }
+    if (userLogin.userInfo!==null||userInfo!==undefined) {
+        navigate(redirect)
+    }  
+    console.log(userLogin.userInfo,userInfo)
   }, [ userInfo, redirect]);
 
   const submitHandler = (e) => {
@@ -36,6 +38,7 @@ const RegisterScreen = () => {
     } else {
       dispatch(register(name, email, password));
     }
+    navigate('/login')
   };
 
   return (
@@ -46,7 +49,7 @@ const RegisterScreen = () => {
         {loading && <Loading />}
         {message && <Message variant="danger">{message}</Message>}
         <Form onSubmit={submitHandler}>
-          <Form.Group controlId="email">
+          <Form.Group controlId="name">
             <Form.Label>Name</Form.Label>
             <Form.Control
               type="text"
@@ -89,7 +92,7 @@ const RegisterScreen = () => {
         <Row>
           <Col>
             Have an account !
-            <Link to={redirect ? `login?redirect=${redirect}` : "/login"}>
+            <Link to={"/login"}>
               Login
             </Link>
           </Col>

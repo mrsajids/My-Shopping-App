@@ -5,14 +5,21 @@ import Navbar from 'react-bootstrap/Navbar'
 import { LinkContainer } from 'react-router-bootstrap'
 import { useSelector, useDispatch } from 'react-redux'
 import { logout } from '../action/userAction'
+import { ToastContainer, toast } from 'react-toastify';
+
 const Header = () => {
     const userLogin = useSelector((state) => state.userLogin);
     const { userInfo } = userLogin;
     const dispatch = useDispatch();
 
     const logoutHandler = () => {
-        dispatch(logout());
+        notify()
+        setTimeout(() => {
+            dispatch(logout());
+        }, 2000);
     };
+
+    const notify = () => toast("Logged out!")
     return (
         <>
             <Navbar expand="lg" className="bg-dark" variant='dark' collapseOnSelect >
@@ -49,6 +56,7 @@ const Header = () => {
                     </Navbar.Collapse>
                 </Container>
             </Navbar>
+            <ToastContainer />
         </>
     )
 }

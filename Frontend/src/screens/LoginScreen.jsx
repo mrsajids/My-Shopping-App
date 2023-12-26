@@ -6,6 +6,7 @@ import Message from "../components/shared/Message"
 import Loading from "../components/shared/Loading"
 import { login } from "../action/userAction"
 import FromContainer from "../components/shared/FromContainer"
+import { ToastContainer, toast } from 'react-toastify';
 
 const LoginScreen = () => {
 
@@ -21,54 +22,61 @@ const LoginScreen = () => {
 
     useEffect(() => {
         if (userInfo) {
-            navigate(redirect)
+            notify()
+            setTimeout(() => {
+                navigate(redirect)
+            }, 1000);
         }
-    }, [ userInfo, redirect])
+    }, [userInfo, redirect])
 
     const submitHandler = (e) => {
         e.preventDefault()
         //dispatch
         dispatch(login(email, password))
     }
+    const notify = () => toast.success("Login Success!")
 
     return (
         <>
             <FromContainer>
-            <h1>SIGN IN</h1>
-            {error && <Message varient="dark">{error}</Message>}
-            {loading && <Loading />}
-            {Loading}
-            <Form onSubmit={submitHandler}>
-                <Form.Group controlId="email">
-                    <Form.Label>Email Address</Form.Label>
-                    <Form.Control
-                        type="email"
-                        placeholder="enter email"
-                        value={email}
-                        onChange={(e) => setEmail(e.target.value)}
-                    ></Form.Control>
-                </Form.Group>
-                <Form.Group controlId="password">
-                    <Form.Label>Password</Form.Label>
-                    <Form.Control
-                        type="password"
-                        placeholder="enter password"
-                        value={password}
-                        onChange={(e) => setPassword(e.target.value)}
-                    ></Form.Control>
-                </Form.Group>
-                <Button type="submit" varient="primary">
-                    SING IN
-                </Button>
-            </Form>
-            <Row>
-                <Col>
-                    New Customer ?
-                    <Link to={(redirect) ? `register?redirect=${redirect}` : "/register"}>
-                        Register
-                    </Link>
-                </Col>
-            </Row>
+                <ToastContainer />
+                <h1>SIGN IN</h1>
+                {error && <Message varient="dark">{error}</Message>}
+                {loading && <Loading />}
+                {Loading}
+                <Form onSubmit={submitHandler}>
+                    <Form.Group controlId="email" className="my-3">
+                        <Form.Label>Email Address</Form.Label>
+                        <Form.Control
+                            type="email"
+                            placeholder="enter email"
+                            value={email}
+                            onChange={(e) => setEmail(e.target.value)}
+                        ></Form.Control>
+                    </Form.Group>
+                    <Form.Group controlId="password" className="my-3">
+                        <Form.Label>Password</Form.Label>
+                        <Form.Control
+                            type="password"
+                            placeholder="enter password"
+                            value={password}
+                            onChange={(e) => setPassword(e.target.value)}
+                        ></Form.Control>
+                    </Form.Group>
+
+                    <Button type="submit" varient="primary" className="m-3">
+                        SING IN
+                    </Button>
+
+                </Form>
+                <Row>
+                    <Col>
+                        New Customer ?
+                        <Link to={"/register"} style={{ "textDecoration": "none" }}>
+                            &nbsp; Register
+                        </Link>
+                    </Col>
+                </Row>
             </FromContainer>
         </>
     )
