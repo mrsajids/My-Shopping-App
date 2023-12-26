@@ -2,7 +2,7 @@ import { createStore, combineReducers, applyMiddleware, compose } from 'redux'
 import { thunk } from 'redux-thunk'
 import { productDetailReducer, productListReducer } from './reducer/productReducer'
 import { cartReducer } from './reducer/cartReducer'
-import { userLoginReducer } from './reducer/userReducer'
+import { userLoginReducer, userRegisterReducer } from './reducer/userReducer'
 // import { composeWithDevTools } from 'redux-devtools-extension'
 
 const userInfoFromStorage = localStorage.getItem('userInfo') 
@@ -25,7 +25,8 @@ const reducer = combineReducers({
   productList: productListReducer,
   productDetails: productDetailReducer,
   cart: cartReducer,
-  userLogin: userLoginReducer
+  userLogin: userLoginReducer,
+  userRegister: userRegisterReducer,
 })
 const middleware = [thunk]
 const composeEnhancer = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose

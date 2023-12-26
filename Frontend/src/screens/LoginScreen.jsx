@@ -5,7 +5,7 @@ import { useDispatch, useSelector } from "react-redux"
 import Message from "../components/shared/Message"
 import Loading from "../components/shared/Loading"
 import { login } from "../action/userAction"
-// import FromContainer from "../components/shared/FromContainer"
+import FromContainer from "../components/shared/FromContainer"
 
 const LoginScreen = () => {
 
@@ -33,9 +33,9 @@ const LoginScreen = () => {
 
     return (
         <>
-            {/* <FromContainer> */}
+            <FromContainer>
             <h1>SIGN IN</h1>
-            {error && <Message varient="danger">{error}</Message>}
+            {error && <Message varient="dark">{error}</Message>}
             {loading && <Loading />}
             {Loading}
             <Form onSubmit={submitHandler}>
@@ -69,7 +69,7 @@ const LoginScreen = () => {
                     </Link>
                 </Col>
             </Row>
-            {/* </FromContainer> */}
+            </FromContainer>
         </>
     )
 }
