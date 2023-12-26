@@ -23,11 +23,9 @@ const LoginScreen = () => {
     useEffect(() => {
         if (userInfo) {
             notify()
-            setTimeout(() => {
-                navigate(redirect)
-            }, 1000);
+            setTimeout(() => navigate(redirect), 1000)
         }
-    }, [userInfo, redirect])
+    }, [navigate,userInfo, redirect])
 
     const submitHandler = (e) => {
         e.preventDefault()
@@ -40,9 +38,8 @@ const LoginScreen = () => {
         <>
             <FromContainer>
                 <h1>SIGN IN</h1>
-                {error && <Message varient="dark">{error}</Message>}
+                {error && <Message variant="danger">{error}</Message>}
                 {loading && <Loading />}
-                {Loading}
                 <Form onSubmit={submitHandler}>
                     <Form.Group controlId="email" className="my-3">
                         <Form.Label>Email Address</Form.Label>
@@ -51,6 +48,7 @@ const LoginScreen = () => {
                             placeholder="enter email"
                             value={email}
                             onChange={(e) => setEmail(e.target.value)}
+                            required
                         ></Form.Control>
                     </Form.Group>
                     <Form.Group controlId="password" className="my-3">
@@ -60,6 +58,7 @@ const LoginScreen = () => {
                             placeholder="enter password"
                             value={password}
                             onChange={(e) => setPassword(e.target.value)}
+                            required
                         ></Form.Control>
                     </Form.Group>
 

@@ -32,7 +32,7 @@ const RegisterScreen = () => {
       notify()
       setTimeout(() => navigate('/login'), 1000);
     }
-  }, [userInfo, redirect]);
+  }, [navigate, userInfo, redirect, userLogin.userInfo]);
 
   const submitHandler = (e) => {
     e.preventDefault();
