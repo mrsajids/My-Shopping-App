@@ -6,7 +6,7 @@ import Message from "../components/shared/Message"
 import Loading from "../components/shared/Loading"
 import { login } from "../action/userAction"
 import FromContainer from "../components/shared/FromContainer"
-import { ToastContainer, toast } from 'react-toastify';
+import { toast } from 'react-toastify';
 
 const LoginScreen = () => {
 
@@ -39,7 +39,6 @@ const LoginScreen = () => {
     return (
         <>
             <FromContainer>
-                <ToastContainer />
                 <h1>SIGN IN</h1>
                 {error && <Message varient="dark">{error}</Message>}
                 {loading && <Loading />}

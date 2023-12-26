@@ -6,6 +6,7 @@ import Message from "../components/shared/Message";
 import Loading from "../components/shared/Loading";
 import { register } from "../action/userAction";
 import FormContainer from "../components/shared/FromContainer";
+import { toast } from 'react-toastify';
 
 const RegisterScreen = () => {
   const [name, setName] = useState("");
@@ -24,11 +25,14 @@ const RegisterScreen = () => {
   const { loading, error, userInfo } = userRegister;
 
   useEffect(() => {
-    if (userLogin.userInfo!==null||userInfo!==undefined) {
-        navigate(redirect)
-    }  
-    console.log(userLogin.userInfo,userInfo)
-  }, [ userInfo, redirect]);
+    if (userLogin.userInfo !== undefined) {
+      navigate(redirect)
+    }
+    if (userInfo) {
+      notify()
+      setTimeout(() => navigate('/login'), 1000);
+    }
+  }, [userInfo, redirect]);
 
   const submitHandler = (e) => {
     e.preventDefault();
@@ -38,8 +42,10 @@ const RegisterScreen = () => {
     } else {
       dispatch(register(name, email, password));
     }
-    navigate('/login')
   };
+
+  const notify = () => toast.success("Registered Successfully! Please Sign-in")
+
 
   return (
     <>
@@ -49,51 +55,54 @@ const RegisterScreen = () => {
         {loading && <Loading />}
         {message && <Message variant="danger">{message}</Message>}
         <Form onSubmit={submitHandler}>
-          <Form.Group controlId="name">
+          <Form.Group controlId="name" className="my-3">
             <Form.Label>Name</Form.Label>
             <Form.Control
               type="text"
-              placeholder="enter Name"
+              placeholder="Enter Name"
               value={name}
               onChange={(e) => setName(e.target.value)}
-            ></Form.Control>
+              required ></Form.Control>
           </Form.Group>
-          <Form.Group controlId="email">
+          <Form.Group controlId="email" className="my-3">
             <Form.Label>Email Address</Form.Label>
             <Form.Control
               type="email"
-              placeholder="enter email"
+              placeholder="Enter email"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
+              required
             ></Form.Control>
           </Form.Group>
-          <Form.Group controlId="password">
+          <Form.Group controlId="password" className="my-3">
             <Form.Label>Password</Form.Label>
             <Form.Control
               type="password"
-              placeholder="enter password"
+              placeholder="Enter password"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
+              required
             ></Form.Control>
           </Form.Group>
-          <Form.Group controlId="confirmPassword">
-            <Form.Label>COnfirm Password</Form.Label>
+          <Form.Group controlId="confirmPassword" className="my-6">
+            <Form.Label>Confirm Password</Form.Label>
             <Form.Control
               type="password"
-              placeholder="Re-enter password"
+              placeholder="Re-Enter password"
               value={confirmPassword}
               onChange={(e) => setConfirmPassword(e.target.value)}
+              required
             ></Form.Control>
           </Form.Group>
-          <Button type="submit" varient="primary">
+          <Button type="submit" varient="primary" className="my-3">
             Register
           </Button>
         </Form>
         <Row>
           <Col>
             Have an account !
-            <Link to={"/login"}>
-              Login
+            <Link to={"/login"} style={{ "textDecoration": "none" }}>
+              &nbsp; Login
             </Link>
           </Col>
         </Row>

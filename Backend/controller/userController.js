@@ -11,7 +11,6 @@ const registerUser =async (req, res, next) => {
     next(error);
   }
   else{
-
     const user = await User.create({ name, email, password });
     if (user) {
       res.status(201).json({

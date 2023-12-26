@@ -19,7 +19,7 @@ const Header = () => {
         }, 2000);
     };
 
-    const notify = () => toast("Logged out!")
+    const notify = () => toast.error("Logged out!")
     return (
         <>
             <Navbar expand="lg" className="bg-dark" variant='dark' collapseOnSelect >

@@ -7,7 +7,7 @@ import { userLoginReducer, userRegisterReducer } from './reducer/userReducer'
 
 const userInfoFromStorage = localStorage.getItem('userInfo') 
   ? JSON.parse(localStorage.getItem('userInfo')) 
-  : null
+  : undefined
 
 const cartItemsFromStorage = localStorage.getItem("cartItems")
   ? JSON.parse(localStorage.getItem("cartItems"))
