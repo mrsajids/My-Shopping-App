@@ -6,8 +6,10 @@ import { LinkContainer } from 'react-router-bootstrap'
 import { useSelector, useDispatch } from 'react-redux'
 import { logout } from '../action/userAction'
 import { ToastContainer, toast } from 'react-toastify';
+import { useNavigate } from 'react-router-dom'
 
 const Header = () => {
+    const navigate=useNavigate()
     const userLogin = useSelector((state) => state.userLogin);
     const { userInfo } = userLogin;
     const dispatch = useDispatch();
@@ -16,6 +18,7 @@ const Header = () => {
         notify()
         setTimeout(() => {
             dispatch(logout());
+            navigate('/')
         }, 2000);
     };
 
