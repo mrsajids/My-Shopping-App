@@ -89,4 +89,5 @@ const updateUserProfile = async (req, res, next) => {
   }
 }
 
+
 module.exports = { authController, getUserProfile, registerUser, updateUserProfile }
