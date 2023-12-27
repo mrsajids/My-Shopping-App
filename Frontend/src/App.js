@@ -10,6 +10,7 @@ import CartSc from './screens/CartSc';
 import LoginScreen from './screens/LoginScreen';
 import RegisterScreen from './screens/RegisterScreen';
 import 'react-toastify/dist/ReactToastify.css'; 
+import ProfileDetail from './screens/ProfileDetail';
 
 function App() {
   return (
@@ -23,6 +24,7 @@ function App() {
             <Route path='/cart/:id?' Component={CartSc} />
             <Route path='/login' Component={LoginScreen} />
             <Route path="/register" Component={RegisterScreen} />
+            <Route path="/profile" Component={ProfileDetail} />
           </Routes>
         </Container>
         <Footer />
