@@ -1,4 +1,4 @@
-import { ADD_TO_CART, REMOVE_FROM_CART } from '../constants/cartConstant'
+import { ADD_TO_CART, REMOVE_FROM_CART, CART_SAVE_SHIPPING_ADDRESS } from '../constants/cartConstant'
 
 export const cartReducer = (state = { cartItems: [] }, action) => {
     switch (action.type) {
@@ -22,6 +22,12 @@ export const cartReducer = (state = { cartItems: [] }, action) => {
             return {
                 ...state,
                 cartItems: state.cartItems.filter((x) => x.product !== action.payload),
+            }
+
+        case CART_SAVE_SHIPPING_ADDRESS:
+            return {
+                ...state,
+                shippingAddress: action.payload
             }
 
         default:

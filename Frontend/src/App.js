@@ -11,6 +11,7 @@ import LoginScreen from './screens/LoginScreen';
 import RegisterScreen from './screens/RegisterScreen';
 import 'react-toastify/dist/ReactToastify.css'; 
 import ProfileDetail from './screens/ProfileDetail';
+import ShippingScreen from './screens/ShippingScreen';
 
 function App() {
   return (
@@ -25,6 +26,7 @@ function App() {
             <Route path='/login' Component={LoginScreen} />
             <Route path="/register" Component={RegisterScreen} />
             <Route path="/profile" Component={ProfileDetail} />
+            <Route path="/shipping" Component={ShippingScreen} />
           </Routes>
         </Container>
         <Footer />
