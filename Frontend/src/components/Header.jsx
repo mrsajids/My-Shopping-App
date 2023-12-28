@@ -11,6 +11,7 @@ import { useNavigate } from 'react-router-dom'
 const Header = () => {
     const navigate=useNavigate()
     const userLogin = useSelector((state) => state.userLogin);
+    const userDetails=useSelector(state=>state.userDetails)
     const { userInfo } = userLogin;
     const dispatch = useDispatch();
 
@@ -34,7 +35,7 @@ const Header = () => {
                             </LinkContainer>
 
                             {userInfo ? (
-                                <NavDropdown title={userInfo.name}>
+                                <NavDropdown title={userDetails.user.name||userInfo.name}>
                                     <LinkContainer to="/profile">
                                         <NavDropdown.Item>Profile</NavDropdown.Item>
                                     </LinkContainer>
