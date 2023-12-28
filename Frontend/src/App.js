@@ -12,6 +12,7 @@ import RegisterScreen from './screens/RegisterScreen';
 import 'react-toastify/dist/ReactToastify.css'; 
 import ProfileDetail from './screens/ProfileDetail';
 import ShippingScreen from './screens/ShippingScreen';
+import PaymentScreen from './screens/PaymentScreen';
 
 function App() {
   return (
@@ -27,6 +28,7 @@ function App() {
             <Route path="/register" Component={RegisterScreen} />
             <Route path="/profile" Component={ProfileDetail} />
             <Route path="/shipping" Component={ShippingScreen} />
+            <Route path="/payment" Component={PaymentScreen} />
           </Routes>
         </Container>
         <Footer />
