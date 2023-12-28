@@ -58,7 +58,6 @@ const LoginScreen = () => {
                             placeholder="enter password"
                             value={password}
                             onChange={(e) => setPassword(e.target.value)}
-                            required
                         ></Form.Control>
                     </Form.Group>
 

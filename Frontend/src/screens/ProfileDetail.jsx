@@ -2,11 +2,13 @@ import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { getUserDetails, updateUserProfile } from "../action/userAction";
-import { Link } from "react-router-dom";
+// import { Link } from "react-router-dom";
 import { Form, Button, Row, Col, Table } from "react-bootstrap";
-import { LinkContainer } from "react-router-bootstrap";
+// import { LinkContainer } from "react-router-bootstrap";
 import Message from "../components/shared/Message";
 import Loading from "../components/shared/Loading";
+import { toast } from 'react-toastify';
+
 
 const ProfileDetail = () => {
 
@@ -23,10 +25,11 @@ const ProfileDetail = () => {
   const userLogin = useSelector((state) => state.userLogin);
   const { userInfo } = userLogin;
 
-  const userUpdateProfile = useSelector((state) => state.userUpdateProfile);
-  const { success } = userUpdateProfile;
+  // const userUpdateProfile = useSelector((state) => state.userUpdateProfile);
+  // // const { success } = userUpdateProfile;
 
   useEffect(() => {
+    //if not login
     if (!userInfo) {
       navigate("/login");
     } else {
@@ -37,15 +40,22 @@ const ProfileDetail = () => {
         setEmail(user.email);
       }
     }
+  }, [userInfo, user, dispatch, navigate]);
 
-  }, []);
 
   const submitHandler = (e) => {
     e.preventDefault();
-    if (password!== confirmPassword) {
+    if (password !== confirmPassword) {
       setMessage("Passwords do not match");
-    } else {
-      dispatch(updateUserProfile({ id: user._id, name, email, password }))
+    }
+    else {
+      // (password === '') ? dispatch(updateUserProfile({ id: user._id, name, email })) 
+      //                   : dispatch(updateUserProfile({ id: user._id, name, email, password }))
+      // dispatch(getUserDetails('profile'))
+      // toast.success("Profile Updated Successfully!")
+      // navigate("/")
+      (password==='')?console.warn('one'):console.warn('two');
+      dispatch(updateUserProfile({ id: user._id, name, email })) 
     }
   }
 
@@ -55,7 +65,6 @@ const ProfileDetail = () => {
         <Col md={3}>
           <h1>Update Information</h1>
           {error && <Message varient="danger">{error}</Message>}
-          {success && <Message variant="success">Profile Updated</Message>}
           {loading && <Loading />}
           {message && <Message variant="danger">{message}</Message>}
           <Form onSubmit={submitHandler}>
@@ -100,7 +109,7 @@ const ProfileDetail = () => {
             </Button>
           </Form>
         </Col>
-    
+
       </Row>
     </>
   )
