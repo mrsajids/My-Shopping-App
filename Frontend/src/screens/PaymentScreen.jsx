@@ -42,7 +42,7 @@ const PaymentScreen = () => {
                             name="paymentMethod"
                             value="stripe"
                             onChange={(e) => setPaymentMethod(e.target.value)}
-                        ></Form.Check>
+                       disabled ></Form.Check>
                     </Col>
                 </Form.Group>
                 <Button type="submit" variant="primary">
