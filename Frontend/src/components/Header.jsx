@@ -15,14 +15,10 @@ const Header = () => {
     const dispatch = useDispatch();
 
     const logoutHandler = () => {
-        notify()
-        setTimeout(() => {
             dispatch(logout());
-            navigate('/')
-        }, 2000);
+            toast.error("Loged Out!")
+            navigate("/login")
     };
-
-    const notify = () => toast.error("Logged out!")
     return (
         <>
             <Navbar expand="lg" className="bg-dark" variant='dark' collapseOnSelect >

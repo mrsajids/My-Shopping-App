@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import { getUserDetails, updateUserProfile } from "../action/userAction";
+import { getUserDetails, login, updateUserProfile } from "../action/userAction";
 // import { Link } from "react-router-dom";
 import { Form, Button, Row, Col, Table } from "react-bootstrap";
 // import { LinkContainer } from "react-router-bootstrap";
@@ -49,13 +49,11 @@ const ProfileDetail = () => {
       setMessage("Passwords do not match");
     }
     else {
-      // (password === '') ? dispatch(updateUserProfile({ id: user._id, name, email })) 
-      //                   : dispatch(updateUserProfile({ id: user._id, name, email, password }))
-      // dispatch(getUserDetails('profile'))
-      // toast.success("Profile Updated Successfully!")
-      // navigate("/")
-      (password==='')?console.warn('one'):console.warn('two');
-      dispatch(updateUserProfile({ id: user._id, name, email })) 
+     dispatch(updateUserProfile({ id: user._id, name, email, password }))
+      dispatch(getUserDetails('profile'))
+      // dispatch(login()) 
+      toast.success("Profile Updated Successfully!")
+      navigate("/")
     }
   }
 
