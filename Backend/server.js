@@ -1,12 +1,12 @@
 const express = require('express')
 const cors = require('cors')
 const products = require('./data/products')
-const dotenv=require('dotenv')
+const dotenv = require('dotenv')
 const dbconnection = require('./config/config')
-const productRoute =require('./router/productRoute')
-const userRoute =require('./router/userRoute')
+const productRoute = require('./router/productRoute')
+const userRoute = require('./router/userRoute')
 
-const orderRoute =require('./router/orderRoute')
+const orderRoute = require('./router/orderRoute')
 const errorHandler = require('./middleWare/errorMiddleWare')
 const app = express()
 
@@ -25,11 +25,11 @@ app.use(express.json())
 //middleware for error
 
 
-app.use('/api',productRoute)
+app.use('/api', productRoute)
 
-app.use('/api/user/',userRoute)
+app.use('/api/user/', userRoute)
 
-app.use('./api/order/',orderRoute)
+app.use('./api/orders/', orderRoute)
 
 
 app.use(errorHandler)
@@ -46,7 +46,7 @@ app.use(errorHandler)
 //     res.json(product)
 // })
 
-const PORT=4000
-app.listen(process.env.PORT||PORT, () => {
+const PORT = 4000
+app.listen(process.env.PORT || PORT, () => {
     console.log(`Server running in ${process.env.NODE_MODE} mode at ${process.env.PORT}`);
 })

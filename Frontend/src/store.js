@@ -3,6 +3,7 @@ import { thunk } from 'redux-thunk'
 import { productDetailReducer, productListReducer } from './reducer/productReducer'
 import { cartReducer } from './reducer/cartReducer'
 import { userDetailsReducer, userLoginReducer, userRegisterReducer, userUpdateProfileReducer } from './reducer/userReducer'
+import { createOrderReducer } from './reducer/orderReducer'
 // import { composeWithDevTools } from 'redux-devtools-extension'
 
 const userInfoFromStorage = localStorage.getItem('userInfo')
@@ -14,7 +15,7 @@ const cartItemsFromStorage = localStorage.getItem("cartItems")
   : []
 
 const shippingAddressFromStorage = localStorage.getItem('shippingAddress')
-? JSON.parse(localStorage.getItem('shippingAddress'))
+  ? JSON.parse(localStorage.getItem('shippingAddress'))
   : {}
 
 
@@ -26,6 +27,7 @@ const initialState = {
   },
   userLogin: { userInfo: userInfoFromStorage },
 }
+
 const reducer = combineReducers({
   productList: productListReducer,
   productDetails: productDetailReducer,
@@ -34,8 +36,9 @@ const reducer = combineReducers({
   userRegister: userRegisterReducer,
   userDetails: userDetailsReducer,
   userUpdateProfile: userUpdateProfileReducer,
-  
+  createOrder: createOrderReducer
 })
+
 const middleware = [thunk]
 const composeEnhancer = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose
 
