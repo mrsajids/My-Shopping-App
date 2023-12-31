@@ -29,7 +29,7 @@ app.use('/api', productRoute)
 
 app.use('/api/user/', userRoute)
 
-app.use('./api/orders/', orderRoute)
+app.use('/api/orders', orderRoute)
 
 
 app.use(errorHandler)
