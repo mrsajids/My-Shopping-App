@@ -3,7 +3,7 @@ import { thunk } from 'redux-thunk'
 import { productDetailReducer, productListReducer } from './reducer/productReducer'
 import { cartReducer } from './reducer/cartReducer'
 import { userDetailsReducer, userLoginReducer, userRegisterReducer, userUpdateProfileReducer } from './reducer/userReducer'
-import { createOrderReducer, orderDetailsReducer } from './reducer/orderReducer'
+import { createOrderReducer, orderDetailsReducer, orderPayReducer } from './reducer/orderReducer'
 // import { composeWithDevTools } from 'redux-devtools-extension'
 
 const userInfoFromStorage = localStorage.getItem('userInfo')
@@ -37,7 +37,8 @@ const reducer = combineReducers({
   userDetails: userDetailsReducer,
   userUpdateProfile: userUpdateProfileReducer,
   createOrder: createOrderReducer,
-  orderDetails: orderDetailsReducer
+  orderDetails: orderDetailsReducer,
+  orderPay: orderPayReducer
 })
 
 const middleware = [thunk]
