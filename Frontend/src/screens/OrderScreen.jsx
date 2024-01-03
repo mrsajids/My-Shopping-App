@@ -1,4 +1,4 @@
-import { PayPalButtons, PayPalScriptProvider, usePayPalScriptReducer } from '@paypal/react-paypal-js';
+import { PayPalButtons, PayPalScriptProvider } from '@paypal/react-paypal-js';
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { ORDER_PAY_RESET } from "../constants/orderConstant";
@@ -32,8 +32,8 @@ const OrderScreen = () => {
   }
 
   const successPaymentHandler = (paymentResult) => {
-    console.log(paymentResult);
     dispatch(payOrder(orderId, paymentResult));
+    console.log(paymentResult);
   };
 
   useEffect(() => {
@@ -42,6 +42,7 @@ const OrderScreen = () => {
       const script = document.createElement("script");
       script.type = "text/javascript";
       script.src = `https://www.paypal.com/sdk/js?client-id=${clientId}`;
+      console.log(clientId);
       script.async = true;
       script.onload = () => {
         setSdkReady(true);
@@ -165,9 +166,9 @@ const OrderScreen = () => {
               {!sdkReady ? (
                 <Loading />
               ) : (
-                <PayPalScriptProvider options={{ 'client-id': 'ASqO7zjCExi-XXsUJfEPTsHyfoliYfMvEwXFhOGjMWmL8EMiDK0FuHxAreoHbIDodkcEGHd_GReHXLIr' }}>
+                <PayPalScriptProvider options={{ 'client-id': 'AYZkFTf_HQFcTZgGGaj7YjB2kTJ_Iv-quaBOwd0zyAQtu0vxiPxiQmqLzzJYMyVALZyCTguGHFzk9T1I' }}>
                   <PayPalButtons
-                    amount={50*100}
+                    amount={order.totalPrice}
                     onSuccess={successPaymentHandler}
                   />
                 </PayPalScriptProvider>
