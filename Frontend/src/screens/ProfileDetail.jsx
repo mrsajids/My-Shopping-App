@@ -8,7 +8,6 @@ import { Form, Button, Row, Col, Table } from "react-bootstrap";
 import Message from "../components/shared/Message";
 import Loading from "../components/shared/Loading";
 import { toast } from 'react-toastify';
-import { listMyOrders } from "../action/orderAction";
 
 
 const ProfileDetail = () => {
@@ -21,16 +20,19 @@ const ProfileDetail = () => {
 
   const navigate = useNavigate()
   const dispatch = useDispatch();
+
   const userDetails = useSelector((state) => state.userDetails);
   const { loading, error, user } = userDetails;
+
   const userLogin = useSelector((state) => state.userLogin);
   const { userInfo } = userLogin;
 
   // const userUpdateProfile = useSelector((state) => state.userUpdateProfile);
-  // // const { success } = userUpdateProfile;
+  // // const { success } = userUpdateProfile; //old comment
 
-  const orderListMy = useSelector((state) => state.orderListMy);
-  const { loading: loadingOrders, orders, error: errorOrders } = orderListMy;
+  // const orderListMy = useSelector((state) => state.orderListMy);
+  // const { loading: loadingOrders, orders, error: errorOrders } = orderListMy;
+
 
   useEffect(() => {
     //if not login
@@ -39,7 +41,7 @@ const ProfileDetail = () => {
     } else {
       if (!user.name) {
         dispatch(getUserDetails('profile'));
-        dispatch(listMyOrders());
+        // dispatch(listMyOrders());
       } else {
         setName(user.name);
         setEmail(user.email);
