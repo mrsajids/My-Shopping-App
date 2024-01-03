@@ -167,7 +167,7 @@ const OrderScreen = () => {
               ) : (
                 <PayPalScriptProvider options={{ 'client-id': 'ASqO7zjCExi-XXsUJfEPTsHyfoliYfMvEwXFhOGjMWmL8EMiDK0FuHxAreoHbIDodkcEGHd_GReHXLIr' }}>
                   <PayPalButtons
-                    amount={50}
+                    amount={50*100}
                     onSuccess={successPaymentHandler}
                   />
                 </PayPalScriptProvider>
