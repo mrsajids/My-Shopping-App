@@ -66,12 +66,15 @@ const updateOrderToPaid = async (req, res,next) => {
     }
   }
 
-  const getMyOrders = async (req, res) => {
-    const user={
-      _id:'658d13a99a8acc9ef9b51fb5'
+  const getMyOrders = async (req, res,next) => {
+    try {
+      
+      const orders = await Order.find({user:req.user._id});
+      res.json(orders);
+    } catch (error) {
+      res.send('working')
     }
-    // const orders = await Order.find({});
-    res.json(user);
+   
   };
 
 

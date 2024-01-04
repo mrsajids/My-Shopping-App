@@ -10,8 +10,8 @@ router.route("/:id").get(protect, getOrderById)
 
 //update order
 router.route("/:id/pay").put(protect, updateOrderToPaid);
-//get my order
+
 //getUserOrder
-router.route("/myorders").get(protect, getMyOrders);
+router.route("/user/myorders").get(protect, getMyOrders);
 
 module.exports = router
