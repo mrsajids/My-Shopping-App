@@ -14,4 +14,9 @@ router.route("/:id/pay").put(protect, updateOrderToPaid);
 //getUserOrder
 router.route("/user/myorders").get(protect, getMyOrders);
 
+// router.route('/delete/delete/delete').delete(
+//     protect,
+//     deleteOrder
+// )
+
 module.exports = router
