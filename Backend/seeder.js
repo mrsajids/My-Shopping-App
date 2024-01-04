@@ -41,7 +41,7 @@ const dataDestory = async () => {
     console.log(`${error}`);
     process.exit(1);
   }
-};
+}; 
 
 if (process.argv[2] === "-d") {
   dataDestory();

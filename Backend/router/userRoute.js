@@ -15,5 +15,4 @@ router.put(
     updateUserProfile
 )
 
-
 module.exports = router

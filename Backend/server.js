@@ -32,8 +32,8 @@ app.use('/api/user/', userRoute)
 app.use('/api/orders', orderRoute)
 
 app.get("/api/config/paypal", (req, res) => {
-    res.send(process.env.PAYPAL_CLIENT_ID);
-  });
+  res.send(process.env.PAYPAL_CLIENT_ID);
+});
 
 app.use(errorHandler)
 // app.get("/", (req, res) => {
@@ -51,5 +51,5 @@ app.use(errorHandler)
 
 const PORT = 4000
 app.listen(process.env.PORT || PORT, () => {
-    console.log(`Server running in ${process.env.NODE_MODE} mode at ${process.env.PORT}`);
+  console.log(`Server running in ${process.env.NODE_MODE} mode at ${process.env.PORT}`);
 })

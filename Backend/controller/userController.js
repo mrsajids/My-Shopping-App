@@ -69,20 +69,20 @@ const updateUserProfile = async (req, res, next) => {
   if (user) {
     user.name = req.body.name || user.name;
     user.email = req.body.email || user.email;
- 
-  if (req.body.password) {
+
+    if (req.body.password) {
       user.password = req.body.password;
-  } 
-  const updateUser = await user.save();
+    }
+    const updateUser = await user.save();
     res.json({
       _id: updateUser._id,
       name: updateUser.name,
       email: updateUser.email,
       isAdmin: updateUser.isAdmin,
       token: generateToken(updateUser._id),
-    }) 
+    })
   }
-    else {
+  else {
     res.status(404);
     const err = new Error("User Not Found");
     next(err);

@@ -1,6 +1,6 @@
 const products = [
   {
-    
+
     name: 'boAt Airdopes 121v2 TWS Earbuds',
     image: '/images/boatHeadfone.jpg',
     description:
@@ -13,7 +13,7 @@ const products = [
     numReviews: 12,
   },
   {
-   
+
     name: 'Micromax IN 1b (Purple, 32 GB)',
     image: '/images/micromaxInB.jpg',
     description:
@@ -26,7 +26,7 @@ const products = [
     numReviews: 8,
   },
   {
-   
+
     name: 'Cannon EOS 80D DSLR Camera',
     image: '/images/camera.jpg',
     description:
@@ -39,7 +39,7 @@ const products = [
     numReviews: 12,
   },
   {
-    
+
     name: 'Sony Playstation 4 Pro White Version',
     image: '/images/playstation.jpg',
     description:
@@ -52,7 +52,7 @@ const products = [
     numReviews: 12,
   },
   {
-    
+
     name: 'Logitech G-Series Gaming Mouse',
     image: '/images/mouse.jpg',
     description:
@@ -65,7 +65,7 @@ const products = [
     numReviews: 10,
   },
   {
-   
+
     name: 'Amazon Echo Dot 3rd Generation',
     image: '/images/alexa.jpg',
     description:
