@@ -20,6 +20,7 @@ const OrderScreen = () => {
   const { order, loading, error } = orderDetails;
   const orderPay = useSelector((state) => state.orderPay);
   const { Loading: LoadingPay, success: successpay } = orderPay;
+  // order.orderItems=[]
   if (!loading) {
     //   Calculate prices
     const addDecimals = (num) => {
