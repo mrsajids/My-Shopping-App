@@ -20,7 +20,7 @@ const OrderScreen = () => {
   const { order, loading, error } = orderDetails;
   const orderPay = useSelector((state) => state.orderPay);
   const { Loading: LoadingPay, success: successpay } = orderPay;
-  if (!Loading) {
+  if (!loading) {
     //   Calculate prices
     const addDecimals = (num) => {
       return (Math.round(num * 100) / 100).toFixed(2);
@@ -31,10 +31,13 @@ const OrderScreen = () => {
     );
   }
 
-  const successPaymentHandler = (paymentResult) => {
-    dispatch(payOrder(orderId, paymentResult));
-    console.log(paymentResult);
-  };
+
+  const payHandler =(data, actions) => {
+    return actions.order.capture().then(function (paymentResult) {
+      dispatch(payOrder(orderId, JSON.stringify(paymentResult)));
+      // console.log('Capture result:', JSON.stringify(paymentResult, null, 2));
+    });
+  }
 
   useEffect(() => {
     const addPaypalScript = async () => {
@@ -42,7 +45,7 @@ const OrderScreen = () => {
       const script = document.createElement("script");
       script.type = "text/javascript";
       script.src = `https://www.paypal.com/sdk/js?client-id=${clientId}`;
-      console.log(clientId);
+      // console.log(order.itemsPrice);
       script.async = true;
       script.onload = () => {
         setSdkReady(true);
@@ -168,9 +171,20 @@ const OrderScreen = () => {
               ) : (
                 <PayPalScriptProvider options={{ 'client-id': 'AYZkFTf_HQFcTZgGGaj7YjB2kTJ_Iv-quaBOwd0zyAQtu0vxiPxiQmqLzzJYMyVALZyCTguGHFzk9T1I' }}>
                   <PayPalButtons
-                    amount={order.totalPrice}
-                    onSuccess={successPaymentHandler}
-                  />
+                  createOrder={(data, actions) => {
+                    return actions.order.create({
+                      purchase_units: [
+                        {
+                          amount: {
+                            value: order.itemsPrice
+                          },
+                        },
+                      ],
+                    });
+                  }}
+                  onApprove={payHandler}
+                    
+                  ></PayPalButtons>
                 </PayPalScriptProvider>
               )}
             </ListGroup.Item>
