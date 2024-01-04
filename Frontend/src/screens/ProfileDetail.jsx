@@ -4,10 +4,11 @@ import { useNavigate } from "react-router-dom";
 import { getUserDetails, updateUserProfile } from "../action/userAction";
 // import { Link } from "react-router-dom";
 import { Form, Button, Row, Col, Table } from "react-bootstrap";
-// import { LinkContainer } from "react-router-bootstrap";
+import { LinkContainer } from "react-router-bootstrap";
 import Message from "../components/shared/Message";
 import Loading from "../components/shared/Loading";
 import { toast } from 'react-toastify';
+import { listMyOrders } from "../action/orderAction";
 
 
 const ProfileDetail = () => {
@@ -30,8 +31,8 @@ const ProfileDetail = () => {
   // const userUpdateProfile = useSelector((state) => state.userUpdateProfile);
   // // const { success } = userUpdateProfile; //old comment
 
-  // const orderListMy = useSelector((state) => state.orderListMy);
-  // const { loading: loadingOrders, orders, error: errorOrders } = orderListMy;
+  const orderListMy = useSelector((state) => state.orderListMy);
+  const { loading: loadingOrders, orders, error: errorOrders } = orderListMy;
 
 
   useEffect(() => {
@@ -41,7 +42,7 @@ const ProfileDetail = () => {
     } else {
       if (!user.name) {
         dispatch(getUserDetails('profile'));
-        // dispatch(listMyOrders());
+        dispatch(listMyOrders());
       } else {
         setName(user.name);
         setEmail(user.email);
@@ -67,8 +68,9 @@ const ProfileDetail = () => {
   return (
     <>
       <Row>
-        <Col md={3}>
-          <h1>Update Information</h1>
+        <Col md={4}>
+          <h1>Update Profile</h1>
+          <hr />
           {error && <Message varient="danger">{error}</Message>}
           {loading && <Loading />}
           {message && <Message variant="danger">{message}</Message>}
@@ -89,6 +91,7 @@ const ProfileDetail = () => {
                 placeholder="enter email"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
+                disabled
               ></Form.Control>
             </Form.Group>
             <Form.Group controlId="password">
@@ -109,15 +112,16 @@ const ProfileDetail = () => {
                 onChange={(e) => setConfirmPassword(e.target.value)}
               ></Form.Control>
             </Form.Group>
-            <Button type="submit" varient="primary">
+            <Button type="submit" varient="primary" className="m-3">
               Update
             </Button>
           </Form>
         </Col>
-        {/* <Col md={9}>
-          <h1>My Orders</h1>
+         <Col md={8}>
+          <h1 >My Orders</h1>
+          <hr />
           {loadingOrders ? (
-            <Loader />
+            <Loading />
           ) : errorOrders ? (
             <Message variant="danger">{errorOrders}</Message>
           ) : (
@@ -168,7 +172,7 @@ const ProfileDetail = () => {
               </tbody>
             </Table>
           )}
-        </Col> */}
+        </Col> 
       </Row>
     </>
   )
