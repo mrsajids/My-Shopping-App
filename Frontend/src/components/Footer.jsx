@@ -3,7 +3,7 @@ import '../App.css'
 const Footer = () => {
   return (
     <>
-      <footer>
+      <footer className="bg-dark" variant='light' >
           <Row>
             <Col className="text-center"> 
             <div className="mt-3"> Copyright &copy; 2023</div>

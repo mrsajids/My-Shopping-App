@@ -8,15 +8,16 @@ footer {
     text-align: center;
 }
 
-.Cards a,.CartList a {
-    text-decoration: none; 
+.Cards a,
+.CartList a {
+    text-decoration: none;
 }
 
-.prodImg{
+.prodImg {
     width: -webkit-fill-available;
 }
 
-.spinner{
+.spinner {
     height: 80px;
     width: 80px;
     display: block;

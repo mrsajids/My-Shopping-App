@@ -9,7 +9,7 @@ import ProductDetails from './screens/ProductDetails';
 import CartSc from './screens/CartSc';
 import LoginScreen from './screens/LoginScreen';
 import RegisterScreen from './screens/RegisterScreen';
-import 'react-toastify/dist/ReactToastify.css'; 
+import 'react-toastify/dist/ReactToastify.css';
 import ProfileDetail from './screens/ProfileDetail';
 import ShippingScreen from './screens/ShippingScreen';
 import PaymentScreen from './screens/PaymentScreen';
@@ -23,7 +23,7 @@ function App() {
         <Header />
         <Container className='main-container my-4'>
           <Routes>
-            <Route path='/' Component={HomeScreen} exact/>
+            <Route path='/' Component={HomeScreen} exact />
             <Route path='/product/:id' Component={ProductDetails} />
             <Route path="/placeorder" Component={PlaceOrderScreen} />
             <Route path='/cart/:id?' Component={CartSc} />

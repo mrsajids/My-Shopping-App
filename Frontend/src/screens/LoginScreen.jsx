@@ -25,7 +25,7 @@ const LoginScreen = () => {
             notify()
             setTimeout(() => navigate(redirect), 1000)
         }
-    }, [navigate,userInfo, redirect])
+    }, [navigate, userInfo, redirect])
 
     const submitHandler = (e) => {
         e.preventDefault()

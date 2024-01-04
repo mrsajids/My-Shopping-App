@@ -4,7 +4,6 @@ import { productDetailReducer, productListReducer } from './reducer/productReduc
 import { cartReducer } from './reducer/cartReducer'
 import { userDetailsReducer, userLoginReducer, userRegisterReducer, userUpdateProfileReducer } from './reducer/userReducer'
 import { createOrderReducer, orderDetailsReducer, orderListMyReducer, orderPayReducer } from './reducer/orderReducer'
-// import { composeWithDevTools } from 'redux-devtools-extension'
 
 const userInfoFromStorage = localStorage.getItem('userInfo')
   ? JSON.parse(localStorage.getItem('userInfo'))

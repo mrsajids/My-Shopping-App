@@ -20,14 +20,12 @@ const CartSc = () => {
     const dispatch = useDispatch()
     const { id } = useParams()
     const location = useLocation()
-    const navigate=useNavigate()
+    const navigate = useNavigate()
     const qty = location.search ? Number(location.search.split("=")[1]) : 1
 
     useEffect(() => {
         if (id) {
             dispatch(addToCart(id, qty))
-        } else {
-            console.log('showing cart')
         }
     }, [dispatch, id, qty])
 
@@ -36,10 +34,10 @@ const CartSc = () => {
 
     const removeFromCartHandler = (id) => {
         dispatch(removeFromCart(id))
-      }
-      const checkout=()=>{
+    }
+    const checkout = () => {
         navigate('/shipping')
-      }
+    }
     return (
         <>
             <Row>
@@ -84,7 +82,7 @@ const CartSc = () => {
                                             <Button
                                                 type="button"
                                                 variant="light"
-                                                onClick={()=>removeFromCartHandler(item.product)}
+                                                onClick={() => removeFromCartHandler(item.product)}
                                             >
                                                 <i
                                                     className="fa fa-trash text-danger"
@@ -115,7 +113,7 @@ const CartSc = () => {
                                 type="button"
                                 className="btn-block"
                                 disabled={cartItems.length === 0}
-                            onClick={checkout}
+                                onClick={checkout}
                             >
                                 Proceed to checkOut
                             </Button>

@@ -22,7 +22,7 @@ export const addToCart = (id, qty) => async (dispatch, getState) => {
         console.error(error)
     }
 }
-
+ 
 export const removeFromCart = (id) => (dispatch, getState) => {
     dispatch({
         type: REMOVE_FROM_CART,

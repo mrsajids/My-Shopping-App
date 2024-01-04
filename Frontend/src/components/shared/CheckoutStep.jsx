@@ -14,7 +14,7 @@ const CheckoutStep = ({ step1, step2, step3, step4 }) => {
                     ) : (
                         <Nav.Link disabled>SignIn</Nav.Link>
                     )}
-                </Nav.Item>
+                </Nav.Item> 
                 <Nav.Item>
                     {step2 ? (
                         <LinkContainer to="/shipping">

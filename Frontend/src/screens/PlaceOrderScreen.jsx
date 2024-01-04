@@ -7,7 +7,7 @@ import Message from "../components/shared/Message";
 import CheckOutStep from "../components/shared/CheckoutStep";
 
 const PlaceOrderScreen = () => {
-    const navigate=useNavigate()
+  const navigate = useNavigate()
   const cart = useSelector((state) => state.cart);
   const dispatch = useDispatch();
   const orderCreate = useSelector((state) => state.createOrder);
@@ -44,7 +44,7 @@ const PlaceOrderScreen = () => {
 
   useEffect(() => {
     if (success) {
-        navigate(`/order/${order._id}`);
+      navigate(`/order/${order._id}`);
     }
     //eslint-disable-next-line
   }, [navigate, success]);

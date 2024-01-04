@@ -1,5 +1,3 @@
-video time watched 
+time watched 
 
--5.00 
-
-remaining
+finished

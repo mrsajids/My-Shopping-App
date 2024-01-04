@@ -8,7 +8,7 @@ const FromContainer = ({ children }) => {
       <Row className="justfy-content-md-center">
         <Col xs={12} md={6}>
           {children}
-        </Col>
+        </Col> 
       </Row>
     </Container>
   );

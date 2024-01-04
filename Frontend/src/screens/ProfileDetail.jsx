@@ -57,7 +57,7 @@ const ProfileDetail = () => {
       setMessage("Passwords do not match");
     }
     else {
-     dispatch(updateUserProfile({ id: user._id, name, email, password }))
+      dispatch(updateUserProfile({ id: user._id, name, email, password }))
       dispatch(getUserDetails('profile'))
       // dispatch(login()) 
       toast.success("Updated Successfully!")
@@ -104,7 +104,7 @@ const ProfileDetail = () => {
               ></Form.Control>
             </Form.Group>
             <Form.Group controlId="confirmPassword">
-              <Form.Label>COnfirm Password</Form.Label>
+              <Form.Label>Confirm Password</Form.Label>
               <Form.Control
                 type="password"
                 placeholder="Re-enter password"
@@ -117,14 +117,14 @@ const ProfileDetail = () => {
             </Button>
           </Form>
         </Col>
-         <Col md={8}>
+        <Col md={8}>
           <h1 >My Orders</h1>
           <hr />
           {loadingOrders ? (
             <Loading />
           ) : errorOrders ? (
             <Message variant="danger">{errorOrders}</Message>
-          ) : (
+          ) : orders.length === 0 ? <h5 className="text-center">Order not found..</h5> : (
             <Table striped bordered hover responsive className="table-sm">
               <thead>
                 <tr>
@@ -172,7 +172,7 @@ const ProfileDetail = () => {
               </tbody>
             </Table>
           )}
-        </Col> 
+        </Col>
       </Row>
     </>
   )

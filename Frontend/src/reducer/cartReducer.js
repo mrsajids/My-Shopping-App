@@ -32,7 +32,7 @@ export const cartReducer = (state = { cartItems: [] }, action) => {
 
         case CART_SAVE_PAYMENT_METHOD:
             return {
-               ...state,
+                ...state,
                 paymentMethod: action.payload
             }
 

@@ -2,7 +2,7 @@ import { PayPalButtons, PayPalScriptProvider } from '@paypal/react-paypal-js';
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { ORDER_PAY_RESET } from "../constants/orderConstant";
-import {  Row, Col, ListGroup, Image, Card } from "react-bootstrap";
+import { Row, Col, ListGroup, Image, Card } from "react-bootstrap";
 import { Link, useParams } from "react-router-dom";
 import { getOrderDetails, payOrder } from "../action/orderAction";
 import { useDispatch, useSelector } from "react-redux";
@@ -33,7 +33,7 @@ const OrderScreen = () => {
   }
 
 
-  const payHandler =(data, actions) => {
+  const payHandler = (data, actions) => {
     return actions.order.capture().then(function (paymentResult) {
       dispatch(payOrder(orderId, JSON.stringify(paymentResult)));
       // console.log('Capture result:', JSON.stringify(paymentResult, null, 2));
@@ -172,19 +172,19 @@ const OrderScreen = () => {
               ) : (
                 <PayPalScriptProvider options={{ 'client-id': 'AYZkFTf_HQFcTZgGGaj7YjB2kTJ_Iv-quaBOwd0zyAQtu0vxiPxiQmqLzzJYMyVALZyCTguGHFzk9T1I' }}>
                   <PayPalButtons
-                  createOrder={(data, actions) => {
-                    return actions.order.create({
-                      purchase_units: [
-                        {
-                          amount: {
-                            value: order.itemsPrice
+                    createOrder={(data, actions) => {
+                      return actions.order.create({
+                        purchase_units: [
+                          {
+                            amount: {
+                              value: order.itemsPrice
+                            },
                           },
-                        },
-                      ],
-                    });
-                  }}
-                  onApprove={payHandler}
-                    
+                        ],
+                      });
+                    }}
+                    onApprove={payHandler}
+
                   ></PayPalButtons>
                 </PayPalScriptProvider>
               )}

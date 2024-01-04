@@ -94,7 +94,6 @@ const ProductDetails = () => {
                     <Loading />
                 )
             }
-
         </>
     )
 }

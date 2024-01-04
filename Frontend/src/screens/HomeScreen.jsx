@@ -17,10 +17,10 @@ const HomeScreen = () => {
   return (
     <>
       <h1>Trends</h1>
-      { loading ? (
+      {loading ? (
         <Loading />
       ) : error ? (
-       <Message> { error }</Message>
+        <Message> {error}</Message>
       ) : (
         <Row>
           {product.map((product, i) => (

@@ -14,11 +14,11 @@ const ProductScreen = ({ product }) => {
                         <Card.Title>{product.name}</Card.Title>
                         {/* <Card.Text>
                         </Card.Text> */}
-                            <Rating  value={product.rating} text={`${product.numReviews} reviews`} />
+                        <Rating value={product.rating} text={`${product.numReviews} reviews`} />
                         <div>
-                        &#x24; {product.price}
+                            &#x24; {product.price}
                         </div>
-                    </Link>               
+                    </Link>
                 </Card.Body>
             </Card>
         </>
