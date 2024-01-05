@@ -35,7 +35,7 @@ const ProductDetails = () => {
                         <Row>
 
                             <Col md={6}>
-                                <img src={product.image} alt={product.name} className="prodImg" />
+                                <img src={product.image} alt={product.name} className="prodImg object-fit-cover border rounded" />
                             </Col>
                             <Col md={4}>
                                 <ListGroup variant="flush">

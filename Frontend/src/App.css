@@ -14,7 +14,7 @@ footer {
 }
 
 .prodImg {
-    width: -webkit-fill-available;
+    width: inherit;
 }
 
 .spinner {
