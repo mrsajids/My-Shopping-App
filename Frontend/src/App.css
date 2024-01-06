@@ -23,3 +23,7 @@ footer {
     display: block;
     margin: auto;
 }
+
+.cursor{
+    cursor: pointer;
+}
