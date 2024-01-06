@@ -2,11 +2,11 @@ const express = require('express')
 
 const router = express.Router()
 
-const {allUsers,addUser,deleteUser}=require('../controller/adminController')
+const {allUsers,deleteUser}=require('../../controller/admin/adminControllerforUser')
 
 router.get('/alluser', allUsers)
 
-router.post('/adduser', addUser)
+// router.post('/adduser', addUser)
 
 router.delete('/deleteuser/:id', deleteUser)
 
