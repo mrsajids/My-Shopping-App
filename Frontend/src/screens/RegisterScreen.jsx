@@ -17,7 +17,7 @@ const RegisterScreen = () => {
   const location = useLocation()
   const navigate = useNavigate()
 
-  const redirect = location.search ? location.search.split("=")[1] : "/";
+  // const redirect = location.search ? location.search.split("=")[1] : "/";
 
   const dispatch = useDispatch();
   const userRegister = useSelector((state) => state.userRegister);
@@ -25,14 +25,14 @@ const RegisterScreen = () => {
   const { loading, error, userInfo } = userRegister;
 
   useEffect(() => {
-    if (userLogin.userInfo !== undefined) {
-      navigate(redirect)
+    if (userLogin.userInfo.isAdmin===false) {
+      navigate('/')
     }
     if (userInfo) {
-      notify()
+      toast.success("Registered Successfully! Please Sign-in")
       setTimeout(() => navigate('/login'), 1000);
     }
-  }, [navigate, userInfo, redirect, userLogin.userInfo]);
+  }, [navigate, userInfo, userLogin.userInfo]);
 
   const submitHandler = (e) => {
     e.preventDefault();
@@ -44,7 +44,6 @@ const RegisterScreen = () => {
     }
   };
 
-  const notify = () => toast.success("Registered Successfully! Please Sign-in")
 
 
   return (

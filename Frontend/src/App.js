@@ -15,6 +15,7 @@ import ShippingScreen from './screens/ShippingScreen';
 import PaymentScreen from './screens/PaymentScreen';
 import PlaceOrderScreen from './screens/PlaceOrderScreen';
 import OrderScreen from './screens/OrderScreen';
+import Dashboard from './screens/Admin/Dashboard';
 
 function App() {
   return (
@@ -33,6 +34,7 @@ function App() {
             <Route path="/shipping" Component={ShippingScreen} />
             <Route path="/payment" Component={PaymentScreen} />
             <Route path="/order/:id" Component={OrderScreen} />
+            <Route path="/admin//*" Component={Dashboard} />
           </Routes>
         </Container>
         <Footer />
