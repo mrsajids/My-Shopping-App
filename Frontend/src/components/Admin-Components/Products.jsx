@@ -27,7 +27,7 @@ const Products = () => {
       <h3>All Products</h3>
       <Row>
         <Col><h6>Total Products {product.length}</h6></Col>
-        <Col className='text-end my-3'><Button onClick={() => navigate('/register')}>ADD NEW Product</Button></Col>
+        <Col className='text-end my-3'><Button onClick={() => navigate('addproduct')}>ADD NEW Product</Button></Col>
       </Row>
       <Row>
         <Col>

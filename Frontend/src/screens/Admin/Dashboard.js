@@ -3,6 +3,7 @@ import { Route, Routes, useNavigate } from 'react-router-dom'
 import Users from '../../components/Admin-Components/Users'
 import Orders from '../../components/Admin-Components/Orders'
 import Products from '../../components/Admin-Components/Products'
+import ProductAdd from '../../components/Admin-Components/ProductAdd'
 const Dashboard = () => {
     const navigate=useNavigate()
     return (
@@ -22,6 +23,7 @@ const Dashboard = () => {
                             <Route path="/orders" Component={Orders} />
                             <Route path="/users" Component={Users} /> 
                             <Route path="/products" Component={Products} />
+                            <Route path="/products/addproduct" Component={ProductAdd} />
                         </Routes>
                     </Col>
                 </Row>
