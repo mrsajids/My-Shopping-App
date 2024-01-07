@@ -43,4 +43,15 @@ const editProduct = async (req, res, next) => {
     }
 }
 
-module.exports = { editProduct,addProduct }
+//delete product
+const deleteProduct = async (req, res, next) => {
+    const product = await Product.findByIdAndDelete(req.params.id);
+    if (product) {
+        res.json(product);
+    } else {
+        res.status(404);
+        const err = new Error("Product Not Found");
+        next(err);
+    }
+}
+module.exports = { editProduct,addProduct,deleteProduct }

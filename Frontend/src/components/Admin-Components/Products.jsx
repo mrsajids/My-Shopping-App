@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { listProduct } from "../../action/productAction";
 import {  Button, Row, Col, Table } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
+import { deleteProduct } from "../../action/admin-action/adminProductAction";
 
 
 const Products = () => {
@@ -15,12 +16,15 @@ const Products = () => {
     dispatch(listProduct);
   }, [dispatch]);
 
-  const handleDelete = () => {
-
+  const handleDelete = (id) => {
+    if (window.confirm("Are you sure?")) {
+      dispatch(deleteProduct(id));
+      dispatch(listProduct);
+    }
   }
 
-  const handleEdit = () => {
-
+  const handleEdit = (data) => {
+    navigate(`/admin/products/editproduct/${data._id}`)
   }
   return (
     <>
@@ -50,7 +54,7 @@ const Products = () => {
                   product.map((data, i) => {
                     return (
                       <tr key={i}>
-                        <td><img src={data.image} alt="prod img" class="img-thumbnail" style={{ 'width': '50%' }} /></td>
+                        <td><img src={data.image} alt="prod img" className="img-thumbnail" style={{ 'width': '50%' }} /></td>
                         <td>{data.name}</td>
                         <td>{data.brand}</td>
                         <td>{data.category}</td>
