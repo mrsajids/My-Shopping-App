@@ -92,8 +92,8 @@ const OrderScreen = () => {
               {order.shippingAddress.postalcode}&nbsp;
               {order.shippingAddress.country}&nbsp;
             </p>
-            {order.isDeliverd ? (
-              <Message variant="success">Paid On {order.isDeliverd}</Message>
+            {order.orderStatus ? (
+              <Message variant="success"> {order.orderStatus}</Message>
             ) : (
               <Message variant="danger">Not Deliverd</Message>
             )}

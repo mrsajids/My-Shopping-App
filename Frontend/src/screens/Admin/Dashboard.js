@@ -21,6 +21,7 @@ const Dashboard = () => {
                     </Col>
                     <Col md={10}>
                         <Routes>
+                            <Route path="/" Component={Orders} />
                             <Route path="/orders" Component={Orders} />
                             <Route path="/users" Component={Users} /> 
                             <Route path="/products" Component={Products} />

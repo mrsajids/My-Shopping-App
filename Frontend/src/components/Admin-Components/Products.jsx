@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { listProduct } from "../../action/productAction";
-import {  Button, Row, Col, Table } from "react-bootstrap";
+import { Button, Row, Col, Table } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
 import { deleteProduct } from "../../action/admin-action/adminProductAction";
 
@@ -51,19 +51,19 @@ const Products = () => {
                 </thead>
                 <tbody>
                   {
-                  product.map((data, i) => {
-                    return (
-                      <tr key={i}>
-                        <td><img src={data.image} alt="prod img" className="img-thumbnail" style={{ 'width': '50%' }} /></td>
-                        <td>{data.name}</td>
-                        <td>{data.brand}</td>
-                        <td>{data.category}</td>
-                        <td className='text-center'>{data.countInStock}</td>
-                        <td className='text-center' onClick={() => handleEdit(data)}><i className="fas fa-edit cursor" ></i></td>
-                        <td className='text-center' onClick={() => handleDelete(data._id)}><i className="fas fa-trash cursor"></i></td>
-                      </tr>
-                    )
-                  })
+                    product.map((data, i) => {
+                      return (
+                        <tr key={i}>
+                          <td><img src={data.image} alt="prod img" className="img-thumbnail" style={{ 'width': '10rem' }} /></td>
+                          <td>{data.name}</td>
+                          <td>{data.brand}</td>
+                          <td>{data.category}</td>
+                          <td className='text-center'>{data.countInStock}</td>
+                          <td className='text-center' onClick={() => handleEdit(data)}><i className="fas fa-edit cursor" ></i></td>
+                          <td className='text-center' onClick={() => handleDelete(data._id)}><i className="fas fa-trash cursor"></i></td>
+                        </tr>
+                      )
+                    })
                   }
                 </tbody>
               </Table>

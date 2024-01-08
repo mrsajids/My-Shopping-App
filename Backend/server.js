@@ -9,6 +9,7 @@ const adminRoute = require('./router/admin/adminRouteforUser')
 const orderRoute = require('./router/orderRoute')
 const errorHandler = require('./middleWare/errorMiddleWare')
 const adminRouteforProduct = require('./router/admin/adminRouteforProduct')
+const adminRouteforOrder = require('./router/admin/adminRouteforOrder')
 const app = express()
 
 //cors error
@@ -33,6 +34,8 @@ app.use('/api/orders', orderRoute)
 app.use('/api/admin/', adminRoute)
 
 app.use('/api/admin/product', adminRouteforProduct)
+
+app.use('/api/admin/order',adminRouteforOrder)
 
 app.get("/api/config/paypal", (req, res) => {
   res.send(process.env.PAYPAL_CLIENT_ID);
