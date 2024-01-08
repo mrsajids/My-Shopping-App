@@ -1,16 +1,17 @@
 import axios from 'axios'
-export const fetchUser = (id) => async (dispatch) => {
+
+export const fetchUser = () => async (dispatch, getState) => {
     try {
         dispatch({ type: 'USER_DETAILS_REQUEST' })
-        // const { userLogin: { userInfo } } = getState()
-        // const config = {
-        //     headers: {
-        //         "Content-Type": "application/json",
-        //         authorization: `Bearer ${userInfo.token}`
-        //     },
-        // };
+        const { userLogin: { userInfo } } = getState()
+        const config = {
+            headers: {
+                "Content-Type": "application/json",
+                authorization: `Bearer ${userInfo.token}`
+            },
+        };
         const { data } = await axios.get(
-            `/api/admin/alluser`
+            `/api/admin/alluser`, config
         );
         dispatch({
             type: 'USER_DETAILS_SUCCESS',
@@ -27,18 +28,18 @@ export const fetchUser = (id) => async (dispatch) => {
     }
 }
 
-export const deleteUser = (id) => async (dispatch) => {
+export const deleteUser = (id) => async (dispatch, getState) => {
     try {
         dispatch({ type: 'DELETE_USER_REQUEST' })
-        // const { userLogin: { userInfo } } = getState()
-        // const config = {
-        //     headers: {
-        //         "Content-Type": "application/json",
-        //         authorization: `Bearer ${userInfo.token}`
-        //     },
-        // };
+        const { userLogin: { userInfo } } = getState()
+        const config = {
+            headers: {
+                "Content-Type": "application/json",
+                authorization: `Bearer ${userInfo.token}`
+            },
+        };
         const { data } = await axios.delete(
-            `/api/admin/deleteuser/${id}`
+            `/api/admin/deleteuser/${id}`,config
         );
         dispatch({
             type: 'DELETE_USER_SUCCESS',
@@ -49,7 +50,7 @@ export const deleteUser = (id) => async (dispatch) => {
             type: 'DELETE_USER_FAIL',
             payload:
                 error.response && error.response.data.message
-                   ? error.response.data.message
+                    ? error.response.data.message
                     : error.message,
         });
     }

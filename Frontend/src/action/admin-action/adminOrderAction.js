@@ -1,17 +1,18 @@
 import axios from 'axios'
 
-export const fetchOrders = () => async (dispatch) => {
+export const fetchOrders = () => async (dispatch,getState) => {
     try {
         dispatch({ type: 'ORDER_FETCH_REQUEST' })
-        // const { userLogin: { userInfo } } = getState()
-        // const config = {
-        //     headers: {
-        //         "Content-Type": "application/json",
-        //         authorization: `Bearer ${userInfo.token}`
-        //     },
-        // };
+        const { userLogin: { userInfo } } = getState()
+        const config = {
+            headers: {
+                "Content-Type": "application/json",
+                authorization: `Bearer ${userInfo.token}`
+            },
+        };
         const {data} = await axios.get(
-            `/api/admin/order/getorders`
+            `/api/admin/order/getorders`,
+            config
         );
         dispatch({
             type: 'ORDER_FETCH_SUCCESS',
@@ -28,18 +29,18 @@ export const fetchOrders = () => async (dispatch) => {
     }
 }
 
-export const updateOrder=(id,orderStatus)=>async(dispatch)=>{
+export const updateOrder=(id,orderStatus)=>async(dispatch,getState)=>{
     try {
         dispatch({ type: 'ORDER_UPDATE_REQUEST' })
-        // const { userLogin: { userInfo } } = getState()
-        // const config = {
-        //     headers: {
-        //         "Content-Type": "application/json",
-        //         authorization: `Bearer ${userInfo.token}`
-        //     },
-        // };
+        const { userLogin: { userInfo } } = getState()
+        const config = {
+            headers: {
+                "Content-Type": "application/json",
+                authorization: `Bearer ${userInfo.token}`
+            },
+        };
         const {data} = await axios.put(
-            `/api/admin/order/${id}`,{orderStatus:orderStatus}
+            `/api/admin/order/${id}`,{orderStatus:orderStatus},config  
         );
         dispatch({
             type: 'ORDER_UPDATE_SUCCESS',
