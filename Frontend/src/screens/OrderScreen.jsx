@@ -167,11 +167,11 @@ const OrderScreen = () => {
                             <p class="text-muted mb-2"> Order ID <span class="fw-bold text-body">{item._id}</span></p>
                             <p class="text-muted mb-2"> Place On
                               <span class="fw-bold text-body">{(order.createdAt).substring(0, 10) + " " + (order.createdAt).substring(11, 16)}</span> </p>
-                              {order.isPaid ? (
-              <Message variant="success">Paid On {order.paidAt}</Message>
-            ) : (
-              <Message variant="danger">Not Paid</Message>
-            )}
+                            {order.isPaid ? (
+                              <Message variant="success">Paid On {order.paidAt}</Message>
+                            ) : (
+                              <Message variant="danger">Not Paid</Message>
+                            )}
                           </div>
                           <div>
                             <h6 class="mb-0"> <a href="#">View Details</a> </h6>
