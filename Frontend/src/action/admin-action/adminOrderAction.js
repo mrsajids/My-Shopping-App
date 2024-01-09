@@ -1,6 +1,6 @@
 import axios from 'axios'
 
-export const fetchOrders = () => async (dispatch,getState) => {
+export const fetchOrders = () => async (dispatch, getState) => {
     try {
         dispatch({ type: 'ORDER_FETCH_REQUEST' })
         const { userLogin: { userInfo } } = getState()
@@ -10,7 +10,7 @@ export const fetchOrders = () => async (dispatch,getState) => {
                 authorization: `Bearer ${userInfo.token}`
             },
         };
-        const {data} = await axios.get(
+        const { data } = await axios.get(
             `/api/admin/order/getorders`,
             config
         );
@@ -23,13 +23,13 @@ export const fetchOrders = () => async (dispatch,getState) => {
             type: 'ORDER_FETCH_FAIL',
             payload:
                 error.response && error.response.data.message
-                   ? error.response.data.message
+                    ? error.response.data.message
                     : error.message,
         });
     }
 }
 
-export const updateOrder=(id,orderStatus)=>async(dispatch,getState)=>{
+export const updateOrder = (id, orderStatus) => async (dispatch, getState) => {
     try {
         dispatch({ type: 'ORDER_UPDATE_REQUEST' })
         const { userLogin: { userInfo } } = getState()
@@ -39,8 +39,8 @@ export const updateOrder=(id,orderStatus)=>async(dispatch,getState)=>{
                 authorization: `Bearer ${userInfo.token}`
             },
         };
-        const {data} = await axios.put(
-            `/api/admin/order/${id}`,{orderStatus:orderStatus},config  
+        const { data } = await axios.put(
+            `/api/admin/order/${id}`, { orderStatus: orderStatus }, config
         );
         dispatch({
             type: 'ORDER_UPDATE_SUCCESS',
@@ -51,7 +51,7 @@ export const updateOrder=(id,orderStatus)=>async(dispatch,getState)=>{
             type: 'ORDER_UPDATE_FAIL',
             payload:
                 error.response && error.response.data.message
-                   ? error.response.data.message
+                    ? error.response.data.message
                     : error.message,
         });
     }

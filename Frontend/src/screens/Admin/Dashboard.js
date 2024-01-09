@@ -17,7 +17,8 @@ const Dashboard = () => {
         if (!userInfo || !userInfo.isAdmin) {
             navigate("/login");
         }
-    }, [])
+    }, [userInfo,navigate])
+
     return (
         <div>
             <Container>
