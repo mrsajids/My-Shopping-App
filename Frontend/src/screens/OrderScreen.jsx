@@ -15,12 +15,14 @@ const OrderScreen = () => {
   const orderId = id;
   const [sdkReady, setSdkReady] = useState(false);
   const dispatch = useDispatch();
+  const [clientid, setClientid] = useState()
 
   const orderDetails = useSelector((state) => state.orderDetails);
   const { order, loading, error } = orderDetails;
+
   const orderPay = useSelector((state) => state.orderPay);
   const { Loading: LoadingPay, success: successpay } = orderPay;
-  // order.orderItems=[]
+
   if (!loading) {
     //   Calculate prices
     const addDecimals = (num) => {
@@ -46,13 +48,13 @@ const OrderScreen = () => {
       const script = document.createElement("script");
       script.type = "text/javascript";
       script.src = `https://www.paypal.com/sdk/js?client-id=${clientId}`;
-      // console.log(order.itemsPrice);
       script.async = true;
       script.onload = () => {
         setSdkReady(true);
       };
       document.body.appendChild(script);
-    };
+      setClientid(clientId)
+    }; 
     if (!order || successpay) {
       dispatch({ type: ORDER_PAY_RESET });
       dispatch(getOrderDetails(orderId));
@@ -62,9 +64,17 @@ const OrderScreen = () => {
       } else {
         setSdkReady(true);
       }
+      console.log('running');
     }
-  }, [dispatch, orderId, order, successpay]);
-  // console.log(orderDetails);
+    if(order && id!==order._id)
+      dispatch(getOrderDetails(orderId));
+  }, [dispatch, id, order, successpay]);
+
+  // useEffect(()=>{
+  //   dispatch(getOrderDetails(orderId));
+
+  // },[order])
+
   return loading ? (
     <Loading />
   ) : error ? (
@@ -72,11 +82,10 @@ const OrderScreen = () => {
   ) : (
 
     <>
-      <h2>Order {order._id}</h2>
+
       <Row>
         <Col md={8}>
           <ListGroup.Item variant="flush">
-            <h2>Shipping</h2>
             <p>
               <strong>Name : </strong>
               {order.user.name}
@@ -92,47 +101,6 @@ const OrderScreen = () => {
               {order.shippingAddress.postalcode}&nbsp;
               {order.shippingAddress.country}&nbsp;
             </p>
-            {order.isDeliverd ? (
-              <Message variant="success">Paid On {order.isDeliverd}</Message>
-            ) : (
-              <Message variant="danger">Not Deliverd</Message>
-            )}
-          </ListGroup.Item>
-          <ListGroup.Item>
-            <h2>Payment Method</h2>
-            <p>
-              <strong>Method :</strong>
-              <strong>{order.paymentMethod}</strong>
-            </p>
-            {order.isPaid ? (
-              <Message variant="success">Paid On {order.paidAt}</Message>
-            ) : (
-              <Message variant="danger">Not Paid</Message>
-            )}
-          </ListGroup.Item>
-          <ListGroup.Item>
-            <h2>Order Items</h2>
-            {order.orderItems.length === 0 ? (
-              <Message>Your Cart is Empty</Message>
-            ) : (
-              <ListGroup variant="flush">
-                {order.orderItems.map((item, index) => (
-                  <ListGroup.Item key={index}>
-                    <Row>
-                      <Col md={1}>
-                        <Image src={item.image} alt={item.name} fluid />
-                      </Col>
-                      <Col>
-                        <Link to={`/product/${item.product}`}>{item.name}</Link>
-                      </Col>
-                      <Col md={4}>
-                        {item.qty} X ${item.price} = ${item.price}
-                      </Col>
-                    </Row>
-                  </ListGroup.Item>
-                ))}
-              </ListGroup>
-            )}
           </ListGroup.Item>
         </Col>
         <Col md={4}>
@@ -170,7 +138,7 @@ const OrderScreen = () => {
               {!sdkReady ? (
                 <Loading />
               ) : (
-                <PayPalScriptProvider options={{ 'client-id': 'AYZkFTf_HQFcTZgGGaj7YjB2kTJ_Iv-quaBOwd0zyAQtu0vxiPxiQmqLzzJYMyVALZyCTguGHFzk9T1I' }}>
+                <PayPalScriptProvider options={{ 'client-id': clientid }}>
                   <PayPalButtons
                     createOrder={(data, actions) => {
                       return actions.order.create({
@@ -192,6 +160,83 @@ const OrderScreen = () => {
           )}
         </Col>
       </Row>
+      {
+        order.orderItems.map((item, index) => {
+
+          return (
+            <section className="vh-100 gradient-custom-2" key={index}>
+              <div className="container py-5 h-100">
+                <div className="row d-flex justify-content-center align-items-center h-100">
+                  <div className="col-md-10 col-lg-8 col-xl-6">
+                    <div className="card card-stepper" style={{ "borderRadius": "16px" }}>
+                      <div className="card-header p-4">
+                        <div className="d-flex justify-content-between align-items-center">
+                          <div>
+                            <p className="text-muted mb-2"> Order ID <span className="fw-bold text-body">{order._id}</span></p>
+                            <p className="text-muted mb-2"> Place On
+                              <span className="fw-bold text-body">{(order.createdAt).substring(0, 10) + " " + (order.createdAt).substring(11, 16)}</span> </p>
+                            {order.isPaid ? (
+                              <Message variant="success">Paid On {order.paidAt}</Message>
+                            ) : (
+                              <Message variant="danger">Not Paid</Message>
+                            )}
+                          </div>
+                          <div>
+                            <h6 className="mb-0"> <a href="#">View Details</a> </h6>
+                          </div>
+                        </div>
+                      </div>
+
+                      <div className="card-body p-4">
+                        <div className="d-flex flex-row mb-4 pb-2">
+                          <div className="flex-fill">
+                            <h5 className="bold">{item.name}</h5>
+                            <p className="text-muted"> Qt:{item.qty} item(s)</p>
+                            <h4 className="mb-3"> {item.qty} X ${item.price} = ${item.price * item.qty} <span className="small text-muted"><br /> via ({order.paymentMethod}) </span></h4>
+                            <p className="text-muted">Tracking Status on: <span className="text-body">11:30pm, Today</span></p>
+                          </div>
+                          <div>
+                            <img className="align-self-center img-fluid"
+                              src={item.image} width="250" />
+                          </div>
+                        </div>
+                        <ul id="progressbar-1" className="mx-0 mt-0 mb-5 px-0 pt-0 pb-4">
+                          <li className="step0 active" id="step1"><span
+                            style={{ "marginLeft": "22px", "marginTop": "12px" }}>PLACED</span></li>
+                          {
+                            order.orderStatus === 'SHIPPED' || order.orderStatus === 'DELIVERD' ?
+                              <li className="step0 active text-center" id="step2"><span>SHIPPED</span></li>
+                              : <li className="step0 text-center" id="step2"><span>SHIPPED</span></li>
+                          }
+                          {
+                            order.orderStatus === 'DELIVERD' ?
+                              <li className="step0 active text-muted text-end" id="step3"><span
+                                style={{ "borderRadius": "16px" }}>DELIVERED</span></li> :
+                              <li className="step0 text-muted text-end" id="step3"><span
+                                style={{ "borderRadius": "16px" }}>DELIVERED</span></li>
+                          }
+                        </ul>
+                      </div>
+
+                      {/* <div className="card-footer p-4">
+                  <div className="d-flex justify-content-between">
+                    <h5 className="fw-normal mb-0"><a href="#!">Track</a></h5>
+                    <div className="border-start h-100"></div>
+                    <h5 className="fw-normal mb-0"><a href="#!">Cancel</a></h5>
+                    <div className="border-start h-100"></div>
+                    <h5 className="fw-normal mb-0"><a href="#!">Pre-pay</a></h5>
+                    <div className="border-start h-100"></div>
+                    <h5 className="fw-normal mb-0"><a href="#!" className="text-muted"><i className="fas fa-ellipsis-v"></i></a>
+                    </h5>
+                  </div>
+                </div> */}
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </section>)
+        })
+      }
     </>
   );
 };
