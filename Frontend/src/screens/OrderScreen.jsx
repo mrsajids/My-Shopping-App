@@ -54,7 +54,7 @@ const OrderScreen = () => {
       };
       document.body.appendChild(script);
       setClientid(clientId)
-    };
+    }; 
     if (!order || successpay) {
       dispatch({ type: ORDER_PAY_RESET });
       dispatch(getOrderDetails(orderId));
@@ -64,8 +64,16 @@ const OrderScreen = () => {
       } else {
         setSdkReady(true);
       }
+      console.log('running');
     }
-  }, [dispatch, orderId, order, successpay]);
+    if(order && id!==order._id)
+      dispatch(getOrderDetails(orderId));
+  }, [dispatch, id, order, successpay]);
+
+  // useEffect(()=>{
+  //   dispatch(getOrderDetails(orderId));
+
+  // },[order])
 
   return loading ? (
     <Loading />
@@ -156,17 +164,17 @@ const OrderScreen = () => {
         order.orderItems.map((item, index) => {
 
           return (
-            <section class="vh-100 gradient-custom-2">
-              <div class="container py-5 h-100">
-                <div class="row d-flex justify-content-center align-items-center h-100">
-                  <div class="col-md-10 col-lg-8 col-xl-6">
-                    <div class="card card-stepper" style={{ "border-radius": "16px;" }}>
-                      <div class="card-header p-4">
-                        <div class="d-flex justify-content-between align-items-center">
+            <section className="vh-100 gradient-custom-2" key={index}>
+              <div className="container py-5 h-100">
+                <div className="row d-flex justify-content-center align-items-center h-100">
+                  <div className="col-md-10 col-lg-8 col-xl-6">
+                    <div className="card card-stepper" style={{ "borderRadius": "16px" }}>
+                      <div className="card-header p-4">
+                        <div className="d-flex justify-content-between align-items-center">
                           <div>
-                            <p class="text-muted mb-2"> Order ID <span class="fw-bold text-body">{item._id}</span></p>
-                            <p class="text-muted mb-2"> Place On
-                              <span class="fw-bold text-body">{(order.createdAt).substring(0, 10) + " " + (order.createdAt).substring(11, 16)}</span> </p>
+                            <p className="text-muted mb-2"> Order ID <span className="fw-bold text-body">{order._id}</span></p>
+                            <p className="text-muted mb-2"> Place On
+                              <span className="fw-bold text-body">{(order.createdAt).substring(0, 10) + " " + (order.createdAt).substring(11, 16)}</span> </p>
                             {order.isPaid ? (
                               <Message variant="success">Paid On {order.paidAt}</Message>
                             ) : (
@@ -174,51 +182,51 @@ const OrderScreen = () => {
                             )}
                           </div>
                           <div>
-                            <h6 class="mb-0"> <a href="#">View Details</a> </h6>
+                            <h6 className="mb-0"> <a href="#">View Details</a> </h6>
                           </div>
                         </div>
                       </div>
 
-                      <div class="card-body p-4">
-                        <div class="d-flex flex-row mb-4 pb-2">
-                          <div class="flex-fill">
-                            <h5 class="bold">{item.name}</h5>
-                            <p class="text-muted"> Qt:{item.qty} item(s)</p>
-                            <h4 class="mb-3"> {item.qty} X ${item.price} = ${item.price * item.qty} <span class="small text-muted"><br /> via ({order.paymentMethod}) </span></h4>
-                            <p class="text-muted">Tracking Status on: <span class="text-body">11:30pm, Today</span></p>
+                      <div className="card-body p-4">
+                        <div className="d-flex flex-row mb-4 pb-2">
+                          <div className="flex-fill">
+                            <h5 className="bold">{item.name}</h5>
+                            <p className="text-muted"> Qt:{item.qty} item(s)</p>
+                            <h4 className="mb-3"> {item.qty} X ${item.price} = ${item.price * item.qty} <span className="small text-muted"><br /> via ({order.paymentMethod}) </span></h4>
+                            <p className="text-muted">Tracking Status on: <span className="text-body">11:30pm, Today</span></p>
                           </div>
                           <div>
-                            <img class="align-self-center img-fluid"
+                            <img className="align-self-center img-fluid"
                               src={item.image} width="250" />
                           </div>
                         </div>
-                        <ul id="progressbar-1" class="mx-0 mt-0 mb-5 px-0 pt-0 pb-4">
-                          <li class="step0 active" id="step1"><span
-                            style={{ "margin-left": "22px;", "margin-top": "12px;" }}>PLACED</span></li>
+                        <ul id="progressbar-1" className="mx-0 mt-0 mb-5 px-0 pt-0 pb-4">
+                          <li className="step0 active" id="step1"><span
+                            style={{ "marginLeft": "22px", "marginTop": "12px" }}>PLACED</span></li>
                           {
-                            order.orderStatus === 'SHIPPED' ?
-                              <li class="step0 active text-center" id="step2"><span>SHIPPED</span></li>
-                              : <li class="step0 text-center" id="step2"><span>SHIPPED</span></li>
+                            order.orderStatus === 'SHIPPED' || order.orderStatus === 'DELIVERD' ?
+                              <li className="step0 active text-center" id="step2"><span>SHIPPED</span></li>
+                              : <li className="step0 text-center" id="step2"><span>SHIPPED</span></li>
                           }
                           {
                             order.orderStatus === 'DELIVERD' ?
-                              <li class="step0 active text-muted text-end" id="step3"><span
-                                style={{ "border-radius": "16px;" }}>DELIVERED</span></li> :
-                              <li class="step0 text-muted text-end" id="step3"><span
-                                style={{ "border-radius": "16px;" }}>DELIVERED</span></li>
+                              <li className="step0 active text-muted text-end" id="step3"><span
+                                style={{ "borderRadius": "16px" }}>DELIVERED</span></li> :
+                              <li className="step0 text-muted text-end" id="step3"><span
+                                style={{ "borderRadius": "16px" }}>DELIVERED</span></li>
                           }
                         </ul>
                       </div>
 
-                      {/* <div class="card-footer p-4">
-                  <div class="d-flex justify-content-between">
-                    <h5 class="fw-normal mb-0"><a href="#!">Track</a></h5>
-                    <div class="border-start h-100"></div>
-                    <h5 class="fw-normal mb-0"><a href="#!">Cancel</a></h5>
-                    <div class="border-start h-100"></div>
-                    <h5 class="fw-normal mb-0"><a href="#!">Pre-pay</a></h5>
-                    <div class="border-start h-100"></div>
-                    <h5 class="fw-normal mb-0"><a href="#!" class="text-muted"><i class="fas fa-ellipsis-v"></i></a>
+                      {/* <div className="card-footer p-4">
+                  <div className="d-flex justify-content-between">
+                    <h5 className="fw-normal mb-0"><a href="#!">Track</a></h5>
+                    <div className="border-start h-100"></div>
+                    <h5 className="fw-normal mb-0"><a href="#!">Cancel</a></h5>
+                    <div className="border-start h-100"></div>
+                    <h5 className="fw-normal mb-0"><a href="#!">Pre-pay</a></h5>
+                    <div className="border-start h-100"></div>
+                    <h5 className="fw-normal mb-0"><a href="#!" className="text-muted"><i className="fas fa-ellipsis-v"></i></a>
                     </h5>
                   </div>
                 </div> */}

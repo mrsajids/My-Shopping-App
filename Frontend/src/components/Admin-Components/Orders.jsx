@@ -1,6 +1,7 @@
 import { useEffect } from "react"
 import { fetchOrders, updateOrder } from "../../action/admin-action/adminOrderAction"
 import { useDispatch, useSelector } from "react-redux"
+import Loading from '../shared/Loading'
 import Table from 'react-bootstrap/Table'
 import Button from 'react-bootstrap/Button'
 
@@ -40,7 +41,7 @@ const Orders = () => {
           </tr>
         </thead>
         <tbody>
-          {loading ? 'loading' :
+          {loading ? <tr>{loading}</tr> :
             orders.map((order, index) => (
               <tr key={index}>
                 <td><img src={order.orderItems[0].image} alt="" className="img-thumbnail" style={{ 'width': '10rem' }} /></td>
@@ -48,7 +49,7 @@ const Orders = () => {
                 <td>
                   <strong>{order.orderStatus}</strong>
                 </td>
-                <td>{order.paymentResult.status}</td>
+                <td>{(order.paymentResult)?order.paymentResult.status:null}</td>
                 <td>{order.orderItems[0].qty}</td>
                 <td>{order.totalPrice}</td>
                 <td>{(order.createdAt).substring(0, 10)}</td>

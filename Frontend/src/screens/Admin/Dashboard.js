@@ -26,7 +26,7 @@ const Dashboard = () => {
                 <hr />
                 <Row>
                     <Col md={12}>
-                        <ButtonGroup horizontal>
+                        <ButtonGroup horizontal="true">
                             <Button variant="outline-primary" onClick={() => navigate('orders')}>Orders</Button>
                             <Button variant="outline-primary" onClick={() => navigate('users')} >Users</Button>
                             <Button variant="outline-primary" onClick={() => navigate('products')}>Products</Button>
