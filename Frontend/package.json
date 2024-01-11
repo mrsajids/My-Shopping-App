@@ -1,6 +1,6 @@
 {
   "name": "shopping-app",
-  "proxy": "http://localhost:4000/",
+  "proxy": "https://shopping-app-3gi8.onrender.com",
   "version": "0.1.0",
   "private": true,
   "dependencies": {

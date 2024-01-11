@@ -2,8 +2,8 @@ import { PayPalButtons, PayPalScriptProvider } from '@paypal/react-paypal-js';
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { ORDER_PAY_RESET } from "../constants/orderConstant";
-import { Row, Col, ListGroup, Image, Card } from "react-bootstrap";
-import { Link, useParams } from "react-router-dom";
+import { Row, Col, ListGroup, Card } from "react-bootstrap";
+import {  useParams } from "react-router-dom";
 import { getOrderDetails, payOrder } from "../action/orderAction";
 import { useDispatch, useSelector } from "react-redux";
 import Message from "../components/shared/Message";
@@ -68,12 +68,8 @@ const OrderScreen = () => {
     }
     if(order && id!==order._id)
       dispatch(getOrderDetails(orderId));
-  }, [dispatch, id, order, successpay]);
+  }, [dispatch, orderId, id, order, successpay]);
 
-  // useEffect(()=>{
-  //   dispatch(getOrderDetails(orderId));
-
-  // },[order])
 
   return loading ? (
     <Loading />
@@ -182,7 +178,7 @@ const OrderScreen = () => {
                             )}
                           </div>
                           <div>
-                            <h6 className="mb-0"> <a href="#">View Details</a> </h6>
+                            <h6 className="mb-0"> <a href="/">View Details</a> </h6>
                           </div>
                         </div>
                       </div>
@@ -196,7 +192,7 @@ const OrderScreen = () => {
                             <p className="text-muted">Tracking Status on: <span className="text-body">11:30pm, Today</span></p>
                           </div>
                           <div>
-                            <img className="align-self-center img-fluid"
+                            <img className="align-self-center img-fluid" alt="product"
                               src={item.image} width="250" />
                           </div>
                         </div>
