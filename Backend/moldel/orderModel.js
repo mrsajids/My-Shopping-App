@@ -99,6 +99,10 @@ const orderSchema = mongoose.Schema(
     deliverAt: {
       type: Date,
     },
+    orderStatus:{
+      type: String,
+      default: "ORDERED"
+    }
   },
   { timestamps: true }
 );

@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Link, useLocation, useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { Form, Button, Row, Col } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import Message from "../components/shared/Message";
@@ -14,10 +14,9 @@ const RegisterScreen = () => {
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
   const [message, setMessage] = useState("");
-  const location = useLocation()
   const navigate = useNavigate()
 
-  const redirect = location.search ? location.search.split("=")[1] : "/";
+  // const redirect = location.search ? location.search.split("=")[1] : "/";
 
   const dispatch = useDispatch();
   const userRegister = useSelector((state) => state.userRegister);
@@ -25,14 +24,14 @@ const RegisterScreen = () => {
   const { loading, error, userInfo } = userRegister;
 
   useEffect(() => {
-    if (userLogin.userInfo !== undefined) {
-      navigate(redirect)
+    if (userLogin.userInfo.isAdmin===false) {
+      navigate('/')
     }
     if (userInfo) {
-      notify()
+      toast.success("Registered Successfully! Please Sign-in")
       setTimeout(() => navigate('/login'), 1000);
     }
-  }, [navigate, userInfo, redirect, userLogin.userInfo]);
+  }, [navigate, userInfo, userLogin.userInfo]);
 
   const submitHandler = (e) => {
     e.preventDefault();
@@ -44,7 +43,6 @@ const RegisterScreen = () => {
     }
   };
 
-  const notify = () => toast.success("Registered Successfully! Please Sign-in")
 
 
   return (

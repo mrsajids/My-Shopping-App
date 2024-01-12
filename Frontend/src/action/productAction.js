@@ -8,6 +8,9 @@ import {
     PRODUCT_DETAILS_FAIL
 } from '../constants/constants'
 
+// Set the base URL for Axios globally
+axios.defaults.baseURL = 'https://shopping-app-3gi8.onrender.com';
+
 export const listProduct = async (dispatch) => { 
     try {
         dispatch({

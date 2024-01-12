@@ -9,14 +9,9 @@ router.post('/', protect, addOrderItem)
 router.route("/:id").get(protect, getOrderById)
 
 //update order
-router.route("/:id/pay").put(protect, updateOrderToPaid);
+router.route("/:id/pay").put(protect, updateOrderToPaid)
 
 //getUserOrder
-router.route("/user/myorders").get(protect, getMyOrders);
-
-// router.route('/delete/delete/delete').delete(
-//     protect,
-//     deleteOrder
-// )
+router.route("/user/myorders").get(protect, getMyOrders)
 
 module.exports = router
