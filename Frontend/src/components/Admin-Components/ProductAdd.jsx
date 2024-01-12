@@ -28,7 +28,7 @@ const ProductAdd = () => {
              dispatch(resetProduct())
             navigate('/admin/products/')
         }
-    },[success])
+    },[navigate,dispatch,success])
 
     const submitHandler = (e) => {
         e.preventDefault()

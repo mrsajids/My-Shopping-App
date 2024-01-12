@@ -33,7 +33,7 @@ const ProductEdit = () => {
              dispatch(resetProductEdit())
             navigate('/admin/products/')
         }
-    },[success])
+    },[dispatch,navigate,success])
 
     const submitHandler = (e) => {
         e.preventDefault()
@@ -43,7 +43,7 @@ const ProductEdit = () => {
 
     return (
         <>
-            {/* {error && toast.error(error)} */}
+            {error && toast.error(error)}
             <h1>edit product</h1>
             <Form onSubmit={submitHandler}>
                 <Form.Group controlId="name">

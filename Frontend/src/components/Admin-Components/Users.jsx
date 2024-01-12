@@ -2,6 +2,8 @@ import { useEffect, useState } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import { deleteUser, fetchUser } from '../../action/admin-action/adminUserAction'
 import { useNavigate } from 'react-router-dom'
+import Message from "../../components/shared/Message";
+
 import { Form, Button, Row, Col, Table } from "react-bootstrap";
 
 import { toast } from 'react-toastify';
@@ -55,6 +57,7 @@ const Users = () => {
 
     return (
         <>
+         {message && <Message variant="danger">{message}</Message>}
             <h3>All Users</h3>
             <Row>
                 <Col><h6>Total Users {user.length}</h6></Col>

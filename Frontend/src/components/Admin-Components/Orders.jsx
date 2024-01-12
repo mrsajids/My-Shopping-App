@@ -1,7 +1,6 @@
 import { useEffect } from "react"
 import { fetchOrders, updateOrder } from "../../action/admin-action/adminOrderAction"
 import { useDispatch, useSelector } from "react-redux"
-import Loading from '../shared/Loading'
 import Table from 'react-bootstrap/Table'
 import Button from 'react-bootstrap/Button'
 
