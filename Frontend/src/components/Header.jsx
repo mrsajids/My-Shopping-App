@@ -22,16 +22,16 @@ const Header = () => {
     };
     return (
         <>
-            <Navbar expand="lg" className="bg-dark" variant='dark' collapseOnSelect >
+            <Navbar expand="lg" className="bg-primary" variant='dark' collapseOnSelect >
                 <Container>
                     <LinkContainer to="/">
-                        <Navbar.Brand>Online Shop</Navbar.Brand>
+                        <Navbar.Brand>SHOP ONLINE</Navbar.Brand>
                     </LinkContainer>
                     <Navbar.Toggle aria-controls="basic-navbar-nav" />
                     <Navbar.Collapse id="basic-navbar-nav">
                         <Nav className="ms-auto" >
                             <LinkContainer to={"/cart/"}>
-                                <Nav.Link active><i className='fas fa-shopping-cart mx-2'></i>Cart</Nav.Link>
+                                <Nav.Link active><i className='fas fa-shopping-cart mx-2'></i>CART</Nav.Link>
                             </LinkContainer>
 
                             {userInfo ? (
@@ -40,14 +40,14 @@ const Header = () => {
                                         <NavDropdown.Item>Profile</NavDropdown.Item>
                                     </LinkContainer>
                                     <NavDropdown.Item onClick={logoutHandler}>
-                                        Logout
+                                        LOGOUT
                                     </NavDropdown.Item>
                                 </NavDropdown>
                             ) : (
                                 <LinkContainer to="/login">
                                     <Nav.Link>
                                         <i className="fas fa-user"></i>
-                                        &nbsp; singin
+                                        &nbsp; SIGN IN
                                     </Nav.Link>
                                 </LinkContainer>
                             )

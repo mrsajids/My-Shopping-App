@@ -5,7 +5,7 @@ import { Link } from "react-router-dom"
 const ProductScreen = ({ product }) => {
     return (
         <>
-            <Card style={{ width: '14rem' }} className="Cards m-2">
+            <Card style={{"width":"16rem"}} className="Cards m-2">
                 <Link to={`/product/${product._id}`}>
                     <Card.Img variant="top" src={product.image} />
                 </Link>
