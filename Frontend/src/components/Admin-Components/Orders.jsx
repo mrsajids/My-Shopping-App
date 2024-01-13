@@ -25,24 +25,24 @@ const Orders = () => {
 
   return (
     <>
-      Orders
+       <h3>Orders</h3>
       <Table striped bordered hover size="sm">
         <thead>
           <tr>
             <th>#</th>
             <th>Product Name</th>
-            <th> Category</th>
+            <th> Status</th>
             <th>Payment </th>
+            <th>Qty</th>
             <th>Price</th>
             <th>Date</th>
-            <th>Status</th>
             <th>Action</th>
           </tr>
         </thead>
         <tbody>
           {loading ? <tr>{loading}</tr> :
             orders.map((order, index) => (
-              <tr key={index}>
+              <tr key={index} >
                 <td><img src={order.orderItems[0].image} alt="" className="img-thumbnail" style={{ 'width': '10rem' }} /></td>
                 <td>{order.orderItems[0].name}</td>
                 <td>
