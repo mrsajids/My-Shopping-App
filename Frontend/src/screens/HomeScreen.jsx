@@ -25,7 +25,7 @@ const HomeScreen = () => {
         <Row>
           {product.map((product, i) => (
             <Col key={i}>
-              <ProductScreen product={product} />
+              <ProductScreen product={product} className="d-flex flex-row" />
             </Col>
           ))}
         </Row>

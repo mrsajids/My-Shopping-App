@@ -5,13 +5,13 @@ import { Link } from "react-router-dom"
 const ProductScreen = ({ product }) => {
     return (
         <>
-            <Card style={{"width":"16rem"}} className="Cards m-2">
+            <Card style={{"width":"16rem"}} className="Cards mx-auto my-1">
                 <Link to={`/product/${product._id}`}>
-                    <Card.Img variant="top" src={product.image} />
+                    <Card.Img className="img-fluid" variant="top" src={product.image} />
                 </Link>
-                <Card.Body className="text-center">
+                <Card.Body className="text-center mx-auto ">
                     <Link to={`/product/${product._id}`}>
-                        <Card.Title>{product.name}</Card.Title>
+                        <Card.Title className="cardTitle">{product.name}</Card.Title>
                         {/* <Card.Text>
                         </Card.Text> */}
                         <Rating value={product.rating} text={`${product.numReviews} reviews`} />

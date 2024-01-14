@@ -37,7 +37,7 @@ const Header = () => {
                             {userInfo ? (
                                 <NavDropdown title={(userDetails.user.name||userInfo.name).toUpperCase()}>
                                     <LinkContainer to="/profile">
-                                        <NavDropdown.Item>Profile</NavDropdown.Item>
+                                        <NavDropdown.Item>PROFILE</NavDropdown.Item>
                                     </LinkContainer>
                                     <NavDropdown.Item onClick={logoutHandler}>
                                         LOGOUT
