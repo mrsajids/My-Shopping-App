@@ -25,7 +25,8 @@ const Orders = () => {
 
   return (
     <>
-       <h3>Orders</h3>
+      <h3>Orders</h3>
+      <h6>Total Products {orders ? orders.length : null}</h6>
       <Table striped bordered hover size="sm">
         <thead>
           <tr>
@@ -48,7 +49,7 @@ const Orders = () => {
                 <td>
                   <strong>{order.orderStatus}</strong>
                 </td>
-                <td>{(order.paymentResult)?order.paymentResult.status:null}</td>
+                <td>{(order.paymentResult) ? order.paymentResult.status : null}</td>
                 <td>{order.orderItems[0].qty}</td>
                 <td>{order.totalPrice}</td>
                 <td>{(order.createdAt).substring(0, 10)}</td>

@@ -74,7 +74,7 @@ const Users = () => {
                                         <th>NAME</th>
                                         <th>MAIL</th>
                                         <th>ADMIN</th>
-                                        <th>ADD</th>
+                                        <th>EDIT</th>
                                         <th>DELETE</th>
                                     </tr>
                                 </thead>
