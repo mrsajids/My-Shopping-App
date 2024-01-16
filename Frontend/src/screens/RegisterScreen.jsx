@@ -24,7 +24,7 @@ const RegisterScreen = () => {
   const { loading, error, userInfo } = userRegister;
 
   useEffect(() => {
-    if (userLogin.userInfo.isAdmin===false) {
+    if (userLogin.userInfo!==undefined) {
       navigate('/')
     }
     if (userInfo) {
@@ -42,8 +42,6 @@ const RegisterScreen = () => {
       dispatch(register(name, email, password));
     }
   };
-
-
 
   return (
     <>

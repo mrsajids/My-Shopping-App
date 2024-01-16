@@ -35,7 +35,7 @@ const ProductDetails = () => {
                         <Row>
 
                             <Col md={6}>
-                                <img src={product.image} alt={product.name} className="prodImg object-fit-cover border rounded" />
+                                <img src={product.image} alt={product.name} className="img-fluid object-fit-cover border rounded" />
                             </Col>
                             <Col md={4}>
                                 <ListGroup variant="flush">
@@ -68,14 +68,14 @@ const ProductDetails = () => {
                                 {product.countInStock > 0 && (
                                     <ListGroupItem>
                                         <Row className="my-3" >
-                                            <Col className="my-2">Qty</Col>
+                                            <Col className="my-2 pdetailsDropdown">Qty</Col>
                                             <Form.Control
                                                 as="select"
                                                 value={qty}
                                                 onChange={(e) => setQty(e.target.value)}
                                             >
                                                 {[...Array(product.countInStock).keys()].map((x) => (
-                                                    <option key={x + 1} value={x + 1}>
+                                                    <option className="" key={x + 1} value={x + 1}>
                                                         {x + 1}
                                                     </option>
                                                 ))}

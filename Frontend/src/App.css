@@ -122,13 +122,26 @@ footer {
 .card-stepper {
     z-index: 0
 }
+.adminCard{
+    cursor: pointer;
+}
+.pdetailsDropdown form-control{
+    width: 40% !important;
+    text-align: center;
+}
 
-@media (max-width:560px) {
+@media (max-width:480px) {
     .Cards{
         width: 9.5rem !important;
         height: 98%;
     }
     .Cards .cardTitle{
         font-size: 99%;
+    }
+}
+
+@media (max-width:800px) {
+    .homeMainCard{
+        padding: 0;
     }
 }

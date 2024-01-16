@@ -29,7 +29,7 @@ const Header = () => {
                     </LinkContainer>
                     <Navbar.Toggle aria-controls="basic-navbar-nav" />
                     <Navbar.Collapse id="basic-navbar-nav">
-                        <Nav className="ms-auto" >
+                        <Nav className="ms-auto text-end my-2" >
                             <LinkContainer to={"/cart/"}>
                                 <Nav.Link active><i className='fas fa-shopping-cart mx-2'></i>CART</Nav.Link>
                             </LinkContainer>

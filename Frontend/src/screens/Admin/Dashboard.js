@@ -1,10 +1,12 @@
-import { Button, ButtonGroup, Col, Container, Row } from 'react-bootstrap'
+import { Col, Container, Row } from 'react-bootstrap'
 import { Route, Routes, useNavigate } from 'react-router-dom'
 import Users from '../../components/Admin-Components/Users'
 import Orders from '../../components/Admin-Components/Orders'
 import Products from '../../components/Admin-Components/Products'
 import ProductAdd from '../../components/Admin-Components/ProductAdd'
 import ProductEdit from '../../components/Admin-Components/ProductEdit'
+import Card from 'react-bootstrap/Card'
+import orderimg from '../../orderbar.png'
 import { useEffect } from 'react'
 import { useSelector } from 'react-redux'
 
@@ -17,21 +19,54 @@ const Dashboard = () => {
         if (!userInfo || !userInfo.isAdmin) {
             navigate("/login");
         }
-    }, [userInfo,navigate])
+    }, [userInfo, navigate])
 
     return (
         <div>
             <Container>
                 <h1>Dashboard</h1>
-                <hr />
-                <Row>
-                    <Col md={12} className='my-3'>
-                        <ButtonGroup horizontal="true">
-                            <Button variant="outline-primary" onClick={() => navigate('orders')}>Orders</Button>
-                            <Button variant="outline-primary" onClick={() => navigate('users')} >Users</Button>
-                            <Button variant="outline-primary" onClick={() => navigate('products')}>Products</Button>
-                        </ButtonGroup>
-                    </Col>
+                <Row clan="true">
+                <Card className='adminCard m-2' style={{ width: '18rem' }} onClick={() => navigate('orders')}>
+                    <Card.Body>
+                        <Row>
+                        <Col>
+                            <Card.Text>
+                                Orders
+                            </Card.Text>
+                            <Card.Title>8</Card.Title>
+                        </Col>
+                        <Col><Card.Img variant="top" src={orderimg} alt='img' /></Col>
+                    </Row>
+                    </Card.Body>
+                </Card>
+
+                <Card className='adminCard adminCard m-2' style={{ width: '18rem' }} onClick={() => navigate('users')}>
+                    <Card.Body>
+                        <Row>
+                        <Col>
+                            <Card.Text>
+                                Users
+                            </Card.Text>
+                            <Card.Title>8</Card.Title>
+                        </Col>
+                        <Col><Card.Img variant="top" src='https://iconape.com/wp-content/png_logo_vector/users.png' alt='img' /></Col>
+                    </Row>
+                    </Card.Body>
+                </Card>
+
+                <Card className='adminCard m-2' style={{ width: '18rem' }} onClick={() => navigate('products')}>
+                    <Card.Body>
+                        <Row>
+                        <Col>
+                            <Card.Text>
+                                Products
+                            </Card.Text>
+                            <Card.Title>8</Card.Title>
+                        </Col>
+                        <Col><Card.Img variant="top" src='https://www.freeiconspng.com/uploads/production-icon-26.jpg' alt='img' /></Col>
+                    </Row>
+                    </Card.Body>
+                </Card>
                 </Row>
                 <Row>
                     <Col md={11}>

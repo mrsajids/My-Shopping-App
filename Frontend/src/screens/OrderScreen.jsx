@@ -3,7 +3,7 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { ORDER_PAY_RESET } from "../constants/orderConstant";
 import { Row, Col, ListGroup, Card } from "react-bootstrap";
-import {  useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import { getOrderDetails, payOrder } from "../action/orderAction";
 import { useDispatch, useSelector } from "react-redux";
 import Message from "../components/shared/Message";
@@ -54,7 +54,7 @@ const OrderScreen = () => {
       };
       document.body.appendChild(script);
       setClientid(clientId)
-    }; 
+    };
     if (!order || successpay) {
       dispatch({ type: ORDER_PAY_RESET });
       dispatch(getOrderDetails(orderId));
@@ -66,7 +66,7 @@ const OrderScreen = () => {
       }
       console.log('running');
     }
-    if(order && id!==order._id)
+    if (order && id !== order._id)
       dispatch(getOrderDetails(orderId));
   }, [dispatch, orderId, id, order, successpay]);
 
@@ -177,9 +177,6 @@ const OrderScreen = () => {
                               <Message variant="danger">Not Paid</Message>
                             )}
                           </div>
-                          <div>
-                            <h6 className="mb-0"> <a href="/">View Details</a> </h6>
-                          </div>
                         </div>
                       </div>
 
@@ -197,8 +194,14 @@ const OrderScreen = () => {
                           </div>
                         </div>
                         <ul id="progressbar-1" className="mx-0 mt-0 mb-5 px-0 pt-0 pb-4">
-                          <li className="step0 active" id="step1"><span
-                            style={{ "marginLeft": "22px", "marginTop": "12px" }}>PLACED</span></li>
+                         
+                          {
+                             order.isPaid?
+                             <li className="step0 active" id="step1"><span
+                             style={{ "marginLeft": "22px", "marginTop": "12px" }}>PLACED</span></li> 
+                             : <li className="step0" id="step1">
+                              <span style={{ "marginLeft": "22px", "marginTop": "12px" }}>PLACED</span></li>
+                          }
                           {
                             order.orderStatus === 'SHIPPED' || order.orderStatus === 'DELIVERD' ?
                               <li className="step0 active text-center" id="step2"><span>SHIPPED</span></li>
