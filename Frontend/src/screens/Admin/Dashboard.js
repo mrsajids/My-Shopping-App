@@ -8,17 +8,26 @@ import ProductEdit from '../../components/Admin-Components/ProductEdit'
 import Card from 'react-bootstrap/Card'
 import orderimg from '../../orderbar.png'
 import { useEffect } from 'react'
-import { useSelector } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
+import { listProduct } from "../../action/productAction";
+import { fetchUser } from '../../action/admin-action/adminUserAction'
+
 
 const Dashboard = () => {
     const userLogin = useSelector((state) => state.userLogin);
     const { userInfo } = userLogin;
+  const productList = useSelector((state) => state.productList);
+  const { user } = useSelector(state => state.allUsers);
+    const dispatch = useDispatch()
+
     const navigate = useNavigate()
 
     useEffect(() => {
         if (!userInfo || !userInfo.isAdmin) {
             navigate("/login");
         }
+    dispatch(listProduct)
+    dispatch(fetchUser())
     }, [userInfo, navigate])
 
     return (
@@ -47,7 +56,7 @@ const Dashboard = () => {
                             <Card.Text>
                                 Users
                             </Card.Text>
-                            <Card.Title>8</Card.Title>
+                            <Card.Title>{user.length}</Card.Title>
                         </Col>
                         <Col><Card.Img variant="top" src='https://iconape.com/wp-content/png_logo_vector/users.png' alt='img' /></Col>
                     </Row>
@@ -61,7 +70,7 @@ const Dashboard = () => {
                             <Card.Text>
                                 Products
                             </Card.Text>
-                            <Card.Title>8</Card.Title>
+                            <Card.Title>{productList.product.length}</Card.Title>
                         </Col>
                         <Col><Card.Img variant="top" src='https://www.freeiconspng.com/uploads/production-icon-26.jpg' alt='img' /></Col>
                     </Row>
