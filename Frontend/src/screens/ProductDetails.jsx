@@ -28,7 +28,7 @@ const ProductDetails = () => {
             {
                 (!loading) ? (
                     <div>
-                        <Link to="/" className="btn btn-light">
+                        <Link to="/" className="btn btn-light my-2">
                             <i className="fas fa-arrow-left"></i> Go Back
                         </Link>
 

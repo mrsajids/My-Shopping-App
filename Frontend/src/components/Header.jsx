@@ -7,6 +7,7 @@ import { useSelector, useDispatch } from 'react-redux'
 import { logout } from '../action/userAction'
 import { ToastContainer, toast } from 'react-toastify';
 import { useNavigate } from 'react-router-dom'
+import logo from './image/logo.png'
 
 const Header = () => {
     const navigate=useNavigate()
@@ -24,6 +25,7 @@ const Header = () => {
         <>
             <Navbar expand="lg" className="bg-primary" variant='dark' collapseOnSelect >
                 <Container>
+                        <img src={logo} alt="logo" style={{'width':'85px'}} />
                     <LinkContainer to="/">
                         <Navbar.Brand>SHOP ONLINE</Navbar.Brand>
                     </LinkContainer>

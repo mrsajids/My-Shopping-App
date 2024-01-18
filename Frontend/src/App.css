@@ -129,7 +129,14 @@ footer {
     width: 40% !important;
     text-align: center;
 }
-
+.progress{
+    height: 1rem;
+    margin: 20vh 0;
+    border-radius: 21px;
+}
+.progress *{
+    align-items: center;
+}
 @media (max-width:480px) {
     .Cards{
         width: 9.5rem !important;

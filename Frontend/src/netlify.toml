@@ -1,0 +1,5 @@
+[[redirects]]
+  from = "/api/*"
+  to = "https://shopping-app-3gi8.onrender.com/:splat"
+  status = 200
+  force = true
