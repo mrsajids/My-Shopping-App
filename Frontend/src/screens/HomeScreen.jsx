@@ -31,7 +31,6 @@ const HomeScreen = () => {
       }
     }, 2000);
   }, [])
-  console.log(product.length === 0)
 
   // useEffect(() => {
   //     dispatch(listProduct);

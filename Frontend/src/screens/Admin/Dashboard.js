@@ -6,7 +6,7 @@ import Products from '../../components/Admin-Components/Products'
 import ProductAdd from '../../components/Admin-Components/ProductAdd'
 import ProductEdit from '../../components/Admin-Components/ProductEdit'
 import Card from 'react-bootstrap/Card'
-import orderimg from '../../orderbar.png'
+import orderimg from '../../components/image/orderbar.png'
 import { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { listProduct } from "../../action/productAction";

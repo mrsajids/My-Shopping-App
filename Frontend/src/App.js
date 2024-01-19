@@ -34,7 +34,7 @@ function App() {
             <Route path="/shipping" Component={ShippingScreen} />
             <Route path="/payment" Component={PaymentScreen} />
             <Route path="/order/:id" Component={OrderScreen} />
-            <Route path="/admin//*" Component={Dashboard} />
+            <Route path="/admin/*" Component={Dashboard} />
           </Routes>
         </Container>
         <Footer />

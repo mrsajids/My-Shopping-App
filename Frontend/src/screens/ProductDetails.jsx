@@ -3,7 +3,7 @@ import { Link, useNavigate, useParams } from 'react-router-dom';
 import Rating from "./Rating";
 import { useEffect, useState } from "react"
 import { useDispatch, useSelector } from "react-redux";
-import { listDetailProduct } from "../action/productAction";
+import { listDetailProduct, productResetDetails } from "../action/productAction";
 import Loading from "../components/shared/Loading";
 
 const ProductDetails = () => {
@@ -21,6 +21,10 @@ const ProductDetails = () => {
     const addToCartHandler = () => {
         navigate(`/cart/${id}?qty=${qty}`);
     };
+    const resetProductHandler=()=>{
+        console.log('ddd');
+        dispatch(productResetDetails())
+    }
     // const products = Products.find((p)=>p._id===match.params.id) uska wala
     // const product = Products.find((p) => p._id === id)
     return (
@@ -28,7 +32,7 @@ const ProductDetails = () => {
             {
                 (!loading) ? (
                     <div>
-                        <Link to="/" className="btn btn-light my-2">
+                        <Link to="/" className="btn btn-light my-2" onClick={resetProductHandler}>
                             <i className="fas fa-arrow-left"></i> Go Back
                         </Link>
 

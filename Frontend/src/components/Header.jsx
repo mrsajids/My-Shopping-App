@@ -25,7 +25,7 @@ const Header = () => {
         <>
             <Navbar expand="lg" className="bg-primary" variant='dark' collapseOnSelect >
                 <Container>
-                        <img src={logo} alt="logo" style={{'width':'85px'}} />
+                        <img src={logo} alt="logo" style={{'width':'74px'}} />
                     <LinkContainer to="/">
                         <Navbar.Brand>SHOP ONLINE</Navbar.Brand>
                     </LinkContainer>

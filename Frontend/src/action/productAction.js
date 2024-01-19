@@ -5,7 +5,8 @@ import {
     PRODUCT_LIST_FAIL,
     PRODUCT_DETAILS_REQUEST,
     PRODUCT_DETAILS_SUCCESS,
-    PRODUCT_DETAILS_FAIL
+    PRODUCT_DETAILS_FAIL,
+    PRODUCT_DETAILS_RESET
 } from '../constants/constants'
 
 // Set the base URL for Axios globally
@@ -46,3 +47,9 @@ export const listDetailProduct = (id) => async (dispatch) => {
         })
     }
 }
+
+export const productResetDetails=()=>(dispatch)=>{
+ dispatch({
+    type:PRODUCT_DETAILS_RESET
+ })
+} 
