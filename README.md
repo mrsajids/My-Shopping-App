@@ -1,7 +1,6 @@
 # Shopping-App
 
 ## Description
-
 An ecommerce store built with MERN stack, and utilizes third party API's. This ecommerce store enable two main different flows or implementations:
 
 1. Buyers browse the store products and brands
