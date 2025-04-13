@@ -5,6 +5,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { listProduct } from "../action/productAction";
 import Message from "../components/shared/Message";
 import ProgressBar from 'react-bootstrap/ProgressBar'
+import Carosal from "../components/Carosal";
 
 const HomeScreen = () => {
   const productList = useSelector((state) => state.productList);
@@ -38,6 +39,7 @@ const HomeScreen = () => {
 
   return (
     <>
+    <Carosal/>
       <h1>Trends</h1>
       {loading ? (
         <ProgressBar className="progressBar" animated now={value} label={`${value}%`} />
