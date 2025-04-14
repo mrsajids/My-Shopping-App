@@ -22,7 +22,7 @@ function App() {
     <>
       <main>
         <Header />
-        <Container className='main-container my-4'>
+        <div className='main-container'>
           <Routes>
             <Route path='/' Component={HomeScreen} exact />
             <Route path='/product/:id' Component={ProductDetails} />
@@ -36,7 +36,7 @@ function App() {
             <Route path="/order/:id" Component={OrderScreen} />
             <Route path="/admin/*" Component={Dashboard} />
           </Routes>
-        </Container>
+        </div>
         <Footer />
       </main>
     </>
