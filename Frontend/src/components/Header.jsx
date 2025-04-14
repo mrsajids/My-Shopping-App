@@ -1,9 +1,25 @@
 import React, { useState } from "react";
-import "./style.css";
+import { useDispatch, useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
+import { logout } from "../action/userAction";
+import { ToastContainer, toast } from 'react-toastify';
+
+import "./components.css";
 
 const Navbar = () => {
   const [menuOpen, setMenuOpen] = useState(false);
   const [activeDropdown, setActiveDropdown] = useState(null);
+  const navigate = useNavigate()
+  const userLogin = useSelector((state) => state.userLogin);
+  const userDetails = useSelector(state => state.userDetails)
+  const { userInfo } = userLogin;
+  const dispatch = useDispatch();
+
+  const logoutHandler = () => {
+    dispatch(logout());
+    toast.error("Loged Out!")
+    navigate("/login")
+  };
 
   const toggleMenu = () => {
     setMenuOpen(!menuOpen);
@@ -40,7 +56,6 @@ const Navbar = () => {
         </li>
 
         <li><a href="#">Brand</a></li>
-        <li><a href="#">Blog</a></li>
 
         <li className={`dropdown ${activeDropdown === 3 ? "active" : ""}`}>
           <a href="#" onClick={() => toggleDropdown(3)}>Pages ▾</a>
@@ -56,6 +71,21 @@ const Navbar = () => {
 
         <li><a href="#">Contact Us</a></li>
       </ul>
+
+      <div className="right-content">
+        <span className="nav-right-content mx-2">
+          <i class="fa  fa-shopping-cart" aria-hidden="true"></i>
+          <span className="badge bg-danger badge-count">0</span>
+        </span>
+        {
+          userInfo ? <span className="nav-right-content mx-2">
+            <i class="fa fa-user" aria-hidden="true"></i>
+          </span>
+            : <button className="badge bg-warning p-1 ms-2" onClick={() => navigate('/login')}>
+              Login
+            </button>
+        }
+      </div>
     </nav>
   );
 };
